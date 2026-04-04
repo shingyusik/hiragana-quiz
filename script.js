@@ -70,8 +70,16 @@ const state = {
   streak: 0,
   answered: 0,
   running: false,
-  awaitingNext: false
+  awaitingNext: false,
+  autoAdvanceTimer: null
 };
+
+function clearAutoAdvanceTimer() {
+  if (state.autoAdvanceTimer) {
+    window.clearTimeout(state.autoAdvanceTimer);
+    state.autoAdvanceTimer = null;
+  }
+}
 
 function shuffle(items) {
   const result = [...items];
@@ -127,6 +135,8 @@ function updateControls() {
 }
 
 function loadNextQuestion() {
+  clearAutoAdvanceTimer();
+
   if (state.deck.length === 0) {
     finishQuiz();
     return;
@@ -144,6 +154,7 @@ function loadNextQuestion() {
 }
 
 function finishQuiz() {
+  clearAutoAdvanceTimer();
   state.current = null;
   state.running = false;
   state.awaitingNext = false;
@@ -159,6 +170,7 @@ function finishQuiz() {
 }
 
 function startQuiz() {
+  clearAutoAdvanceTimer();
   state.deck = shuffle(HIRAGANA_SET);
   state.current = null;
   state.score = 0;
@@ -194,9 +206,13 @@ function submitAnswer(event) {
     state.score += 1;
     state.streak += 1;
     setFeedback(
-      `정답입니다. ${state.current.kana}의 허용 표기는 ${formatAnswers(state.current)} 입니다.`,
+      `정답입니다. ${state.current.kana}의 허용 표기는 ${formatAnswers(state.current)} 입니다. 곧 다음 문제로 넘어갑니다.`,
       "correct"
     );
+    state.autoAdvanceTimer = window.setTimeout(() => {
+      state.autoAdvanceTimer = null;
+      loadNextQuestion();
+    }, 900);
   } else {
     state.streak = 0;
     setFeedback(
@@ -214,6 +230,7 @@ function revealAnswer() {
     return;
   }
 
+  clearAutoAdvanceTimer();
   state.answered += 1;
   state.streak = 0;
   state.awaitingNext = true;
