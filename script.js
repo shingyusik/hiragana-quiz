@@ -50,6 +50,7 @@ const HIRAGANA_SET = [
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
 const submitButton = document.getElementById("submitButton");
+const revealButton = document.getElementById("revealButton");
 const nextButton = document.getElementById("nextButton");
 const answerForm = document.getElementById("answerForm");
 const answerInput = document.getElementById("answerInput");
@@ -120,6 +121,7 @@ function updateControls() {
 
   answerInput.disabled = !canAnswer;
   submitButton.disabled = !canAnswer;
+  revealButton.disabled = !canAnswer;
   nextButton.disabled = !canMoveNext;
   restartButton.hidden = !canRestart;
 }
@@ -207,8 +209,28 @@ function submitAnswer(event) {
   updateControls();
 }
 
+function revealAnswer() {
+  if (!state.current || state.awaitingNext) {
+    return;
+  }
+
+  state.answered += 1;
+  state.streak = 0;
+  state.awaitingNext = true;
+  answerInput.value = "";
+
+  setFeedback(
+    `정답 공개. ${state.current.kana}의 정답은 ${formatAnswers(state.current)} 입니다.`,
+    "neutral"
+  );
+
+  updateStatus();
+  updateControls();
+}
+
 startButton.addEventListener("click", startQuiz);
 restartButton.addEventListener("click", startQuiz);
+revealButton.addEventListener("click", revealAnswer);
 nextButton.addEventListener("click", loadNextQuestion);
 answerForm.addEventListener("submit", submitAnswer);
 
