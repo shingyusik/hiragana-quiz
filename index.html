@@ -19,8 +19,9 @@
         <h1>히라가나 암기 퀴즈</h1>
         <p class="hero-copy">
           테스트를 시작하면 히라가나가 랜덤으로 하나씩 나타납니다. 키보드로
-          발음을 입력하세요. 기본은 46자이며, 탁음은 버튼으로 켰을 때만 함께
-          출제됩니다. 한국어와 영어 표기 둘 다 정답으로 인정합니다.
+          발음을 입력하세요. 기본은 46자이며, 탁음, 반탁음, 요음, 촉음,
+          장음은 버튼으로 켰을 때만 함께 출제됩니다. 한국어와 영어 표기 둘 다
+          정답으로 인정합니다.
         </p>
 
         <div class="hero-actions">
@@ -37,6 +38,38 @@
             aria-pressed="false"
           >
             탁음 포함: OFF
+          </button>
+          <button
+            id="handakutenToggle"
+            class="ghost-button option-button"
+            type="button"
+            aria-pressed="false"
+          >
+            반탁음: OFF
+          </button>
+          <button
+            id="youonToggle"
+            class="ghost-button option-button"
+            type="button"
+            aria-pressed="false"
+          >
+            요음: OFF
+          </button>
+          <button
+            id="sokuonToggle"
+            class="ghost-button option-button"
+            type="button"
+            aria-pressed="false"
+          >
+            촉음: OFF
+          </button>
+          <button
+            id="choonToggle"
+            class="ghost-button option-button"
+            type="button"
+            aria-pressed="false"
+          >
+            장음: OFF
           </button>
         </div>
       </section>
@@ -117,6 +150,9 @@
             <li><span>し</span>는 <strong>shi</strong>, <strong>si</strong>, <strong>시</strong> 모두 인정</li>
             <li><span>ち</span>는 <strong>chi</strong>, <strong>ti</strong>, <strong>치</strong> 모두 인정</li>
             <li><span>つ</span>는 <strong>tsu</strong>, <strong>tu</strong>, <strong>츠</strong> 모두 인정</li>
+            <li><span>きゃ</span>는 <strong>kya</strong>, <strong>캬</strong> 모두 인정</li>
+            <li><span>っか</span>는 <strong>kka</strong>, <strong>까</strong> 모두 인정</li>
+            <li><span>こう</span>는 <strong>kou</strong>, <strong>코우</strong> 모두 인정</li>
             <li>입력은 대소문자와 공백을 무시합니다.</li>
           </ul>
         </article>

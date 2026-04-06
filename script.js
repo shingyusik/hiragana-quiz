@@ -70,9 +70,126 @@ const DAKUTEN_SET = [
   { kana: "ぼ", roman: ["bo"], korean: ["보"] }
 ];
 
+const HANDAKUTEN_SET = [
+  { kana: "ぱ", roman: ["pa"], korean: ["파"] },
+  { kana: "ぴ", roman: ["pi"], korean: ["피"] },
+  { kana: "ぷ", roman: ["pu"], korean: ["푸"] },
+  { kana: "ぺ", roman: ["pe"], korean: ["페"] },
+  { kana: "ぽ", roman: ["po"], korean: ["포"] }
+];
+
+const YOUON_SET = [
+  { kana: "きゃ", roman: ["kya"], korean: ["캬"] },
+  { kana: "きゅ", roman: ["kyu"], korean: ["큐"] },
+  { kana: "きょ", roman: ["kyo"], korean: ["쿄"] },
+  { kana: "しゃ", roman: ["sha", "sya"], korean: ["샤"] },
+  { kana: "しゅ", roman: ["shu", "syu"], korean: ["슈"] },
+  { kana: "しょ", roman: ["sho", "syo"], korean: ["쇼"] },
+  { kana: "ちゃ", roman: ["cha", "cya", "tya"], korean: ["차", "챠"] },
+  { kana: "ちゅ", roman: ["chu", "cyu", "tyu"], korean: ["추", "츄"] },
+  { kana: "ちょ", roman: ["cho", "cyo", "tyo"], korean: ["초", "쵸"] },
+  { kana: "にゃ", roman: ["nya"], korean: ["냐"] },
+  { kana: "にゅ", roman: ["nyu"], korean: ["뉴"] },
+  { kana: "にょ", roman: ["nyo"], korean: ["뇨"] },
+  { kana: "ひゃ", roman: ["hya"], korean: ["햐"] },
+  { kana: "ひゅ", roman: ["hyu"], korean: ["휴"] },
+  { kana: "ひょ", roman: ["hyo"], korean: ["효"] },
+  { kana: "みゃ", roman: ["mya"], korean: ["먀"] },
+  { kana: "みゅ", roman: ["myu"], korean: ["뮤"] },
+  { kana: "みょ", roman: ["myo"], korean: ["묘"] },
+  { kana: "りゃ", roman: ["rya"], korean: ["랴"] },
+  { kana: "りゅ", roman: ["ryu"], korean: ["류"] },
+  { kana: "りょ", roman: ["ryo"], korean: ["료"] }
+];
+
+const DAKUTEN_YOUON_SET = [
+  { kana: "ぎゃ", roman: ["gya"], korean: ["갸"] },
+  { kana: "ぎゅ", roman: ["gyu"], korean: ["규"] },
+  { kana: "ぎょ", roman: ["gyo"], korean: ["교"] },
+  { kana: "じゃ", roman: ["ja", "jya", "zya"], korean: ["자", "쟈"] },
+  { kana: "じゅ", roman: ["ju", "jyu", "zyu"], korean: ["주", "쥬"] },
+  { kana: "じょ", roman: ["jo", "jyo", "zyo"], korean: ["조", "죠"] },
+  { kana: "びゃ", roman: ["bya"], korean: ["뱌"] },
+  { kana: "びゅ", roman: ["byu"], korean: ["뷰"] },
+  { kana: "びょ", roman: ["byo"], korean: ["뵤"] }
+];
+
+const HANDAKUTEN_YOUON_SET = [
+  { kana: "ぴゃ", roman: ["pya"], korean: ["퍄"] },
+  { kana: "ぴゅ", roman: ["pyu"], korean: ["퓨"] },
+  { kana: "ぴょ", roman: ["pyo"], korean: ["표"] }
+];
+
+const SOKUON_SET = [
+  { kana: "っか", roman: ["kka"], korean: ["까"] },
+  { kana: "っき", roman: ["kki"], korean: ["끼"] },
+  { kana: "っく", roman: ["kku"], korean: ["꾸"] },
+  { kana: "っけ", roman: ["kke"], korean: ["께"] },
+  { kana: "っこ", roman: ["kko"], korean: ["꼬"] },
+  { kana: "っさ", roman: ["ssa"], korean: ["싸"] },
+  { kana: "っし", roman: ["sshi", "ssi"], korean: ["씨"] },
+  { kana: "った", roman: ["tta"], korean: ["따"] },
+  { kana: "っち", roman: ["cchi", "tchi"], korean: ["찌"] },
+  { kana: "っと", roman: ["tto"], korean: ["또"] }
+];
+
+const CHOON_SET = [
+  { kana: "ああ", roman: ["aa"], korean: ["아아"] },
+  { kana: "いい", roman: ["ii"], korean: ["이이"] },
+  { kana: "うう", roman: ["uu"], korean: ["우우"] },
+  { kana: "えい", roman: ["ei"], korean: ["에이"] },
+  { kana: "ええ", roman: ["ee"], korean: ["에에"] },
+  { kana: "おう", roman: ["ou"], korean: ["오우"] },
+  { kana: "おお", roman: ["oo"], korean: ["오오"] },
+  { kana: "かあ", roman: ["kaa"], korean: ["카아"] },
+  { kana: "きい", roman: ["kii"], korean: ["키이"] },
+  { kana: "くう", roman: ["kuu"], korean: ["쿠우"] },
+  { kana: "けい", roman: ["kei"], korean: ["케이"] },
+  { kana: "こう", roman: ["kou"], korean: ["코우"] }
+];
+
+const OPTION_CONFIG = {
+  dakuten: {
+    label: "탁음",
+    buttonId: "dakutenToggle",
+    count: () => DAKUTEN_SET.length
+  },
+  handakuten: {
+    label: "반탁음",
+    buttonId: "handakutenToggle",
+    count: () => HANDAKUTEN_SET.length
+  },
+  youon: {
+    label: "요음",
+    buttonId: "youonToggle",
+    count: (options) => {
+      let count = YOUON_SET.length;
+
+      if (options.dakuten) {
+        count += DAKUTEN_YOUON_SET.length;
+      }
+
+      if (options.handakuten) {
+        count += HANDAKUTEN_YOUON_SET.length;
+      }
+
+      return count;
+    }
+  },
+  sokuon: {
+    label: "촉음",
+    buttonId: "sokuonToggle",
+    count: () => SOKUON_SET.length
+  },
+  choon: {
+    label: "장음",
+    buttonId: "choonToggle",
+    count: () => CHOON_SET.length
+  }
+};
+
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
-const dakutenToggle = document.getElementById("dakutenToggle");
 const submitButton = document.getElementById("submitButton");
 const revealButton = document.getElementById("revealButton");
 const nextButton = document.getElementById("nextButton");
@@ -88,13 +205,26 @@ const streakCount = document.getElementById("streakCount");
 const progressText = document.getElementById("progressText");
 const progressFill = document.getElementById("progressFill");
 
+const optionButtons = Object.fromEntries(
+  Object.entries(OPTION_CONFIG).map(([key, config]) => [
+    key,
+    document.getElementById(config.buttonId)
+  ])
+);
+
 const state = {
   deck: [],
   current: null,
   score: 0,
   streak: 0,
   answered: 0,
-  includeDakuten: false,
+  options: {
+    dakuten: false,
+    handakuten: false,
+    youon: false,
+    sokuon: false,
+    choon: false
+  },
   running: false,
   awaitingNext: false,
   autoAdvanceTimer: null
@@ -123,13 +253,55 @@ function normalizeInput(value) {
 }
 
 function getQuizPool() {
-  return state.includeDakuten
-    ? [...HIRAGANA_SET, ...DAKUTEN_SET]
-    : [...HIRAGANA_SET];
+  const pool = [...HIRAGANA_SET];
+
+  if (state.options.dakuten) {
+    pool.push(...DAKUTEN_SET);
+  }
+
+  if (state.options.handakuten) {
+    pool.push(...HANDAKUTEN_SET);
+  }
+
+  if (state.options.youon) {
+    pool.push(...YOUON_SET);
+
+    if (state.options.dakuten) {
+      pool.push(...DAKUTEN_YOUON_SET);
+    }
+
+    if (state.options.handakuten) {
+      pool.push(...HANDAKUTEN_YOUON_SET);
+    }
+  }
+
+  if (state.options.sokuon) {
+    pool.push(...SOKUON_SET);
+  }
+
+  if (state.options.choon) {
+    pool.push(...CHOON_SET);
+  }
+
+  return pool;
 }
 
 function getTotalQuestionCount() {
   return getQuizPool().length;
+}
+
+function getDeckSummary() {
+  const summary = ["기본 46자"];
+
+  Object.entries(OPTION_CONFIG).forEach(([key, config]) => {
+    if (!state.options[key]) {
+      return;
+    }
+
+    summary.push(`${config.label} ${config.count(state.options)}자`);
+  });
+
+  return `현재 문제풀: ${summary.join(" + ")}`;
 }
 
 function getAcceptedAnswers(item) {
@@ -169,13 +341,16 @@ function updateControls() {
   revealButton.disabled = !canAnswer;
   nextButton.disabled = !canMoveNext;
   restartButton.hidden = !canRestart;
+  deckHint.textContent = getDeckSummary();
 
-  dakutenToggle.setAttribute("aria-pressed", String(state.includeDakuten));
-  dakutenToggle.classList.toggle("is-active", state.includeDakuten);
-  dakutenToggle.textContent = `탁음 포함: ${state.includeDakuten ? "ON" : "OFF"}`;
-  deckHint.textContent = state.includeDakuten
-    ? `현재 문제풀: 기본 46자 + 탁음 ${DAKUTEN_SET.length}자`
-    : "현재 문제풀: 기본 46자";
+  Object.entries(OPTION_CONFIG).forEach(([key, config]) => {
+    const button = optionButtons[key];
+    const enabled = state.options[key];
+
+    button.setAttribute("aria-pressed", String(enabled));
+    button.classList.toggle("is-active", enabled);
+    button.textContent = `${config.label}: ${enabled ? "ON" : "OFF"}`;
+  });
 }
 
 function loadNextQuestion() {
@@ -291,15 +466,15 @@ function revealAnswer() {
   updateControls();
 }
 
-function toggleDakuten() {
-  state.includeDakuten = !state.includeDakuten;
+function toggleOption(key) {
+  const label = OPTION_CONFIG[key].label;
+
+  state.options[key] = !state.options[key];
 
   if (state.running || state.answered > 0) {
     startQuiz();
     setFeedback(
-      state.includeDakuten
-        ? "탁음이 활성화되어 문제를 다시 섞었습니다."
-        : "탁음을 제외하고 기본 46자로 다시 섞었습니다.",
+      `${label}을 ${state.options[key] ? "활성화" : "비활성화"}하고 문제를 다시 섞었습니다.`,
       "neutral"
     );
     return;
@@ -308,19 +483,20 @@ function toggleDakuten() {
   updateStatus();
   updateControls();
   setFeedback(
-    state.includeDakuten
-      ? "탁음이 활성화되었습니다. 시작하면 기본 46자와 함께 출제됩니다."
-      : "탁음이 비활성화되었습니다. 기본 46자만 출제됩니다.",
+    `${label}이 ${state.options[key] ? "활성화" : "비활성화"}되었습니다.`,
     "neutral"
   );
 }
 
 startButton.addEventListener("click", startQuiz);
 restartButton.addEventListener("click", startQuiz);
-dakutenToggle.addEventListener("click", toggleDakuten);
 revealButton.addEventListener("click", revealAnswer);
 nextButton.addEventListener("click", loadNextQuestion);
 answerForm.addEventListener("submit", submitAnswer);
+
+Object.keys(OPTION_CONFIG).forEach((key) => {
+  optionButtons[key].addEventListener("click", () => toggleOption(key));
+});
 
 updateStatus();
 updateControls();

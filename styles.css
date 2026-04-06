@@ -163,6 +163,10 @@ button:disabled {
   box-shadow: 0 12px 26px rgba(159, 52, 23, 0.18);
 }
 
+.option-button {
+  min-width: 118px;
+}
+
 .quiz-grid {
   display: grid;
   grid-template-columns: 1.1fr 1.2fr;
