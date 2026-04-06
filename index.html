@@ -19,7 +19,8 @@
         <h1>히라가나 암기 퀴즈</h1>
         <p class="hero-copy">
           테스트를 시작하면 히라가나가 랜덤으로 하나씩 나타납니다. 키보드로
-          발음을 입력하세요. 한국어와 영어 표기 둘 다 정답으로 인정합니다.
+          발음을 입력하세요. 기본은 46자이며, 탁음은 버튼으로 켰을 때만 함께
+          출제됩니다. 한국어와 영어 표기 둘 다 정답으로 인정합니다.
         </p>
 
         <div class="hero-actions">
@@ -28,6 +29,14 @@
           </button>
           <button id="restartButton" class="ghost-button" type="button" hidden>
             다시 섞기
+          </button>
+          <button
+            id="dakutenToggle"
+            class="ghost-button option-button"
+            type="button"
+            aria-pressed="false"
+          >
+            탁음 포함: OFF
           </button>
         </div>
       </section>
@@ -38,6 +47,9 @@
           <div id="kanaDisplay" class="kana-display">?</div>
           <p id="questionHint" class="question-hint">
             시작 버튼을 누르면 문제가 표시됩니다.
+          </p>
+          <p id="deckHint" class="deck-hint">
+            현재 문제풀: 기본 46자
           </p>
         </article>
 

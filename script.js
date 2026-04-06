@@ -47,8 +47,32 @@ const HIRAGANA_SET = [
   { kana: "ん", roman: ["n", "nn"], korean: ["응", "은"] }
 ];
 
+const DAKUTEN_SET = [
+  { kana: "が", roman: ["ga"], korean: ["가"] },
+  { kana: "ぎ", roman: ["gi"], korean: ["기"] },
+  { kana: "ぐ", roman: ["gu"], korean: ["구"] },
+  { kana: "げ", roman: ["ge"], korean: ["게"] },
+  { kana: "ご", roman: ["go"], korean: ["고"] },
+  { kana: "ざ", roman: ["za"], korean: ["자"] },
+  { kana: "じ", roman: ["ji", "zi"], korean: ["지"] },
+  { kana: "ず", roman: ["zu"], korean: ["즈"] },
+  { kana: "ぜ", roman: ["ze"], korean: ["제"] },
+  { kana: "ぞ", roman: ["zo"], korean: ["조"] },
+  { kana: "だ", roman: ["da"], korean: ["다"] },
+  { kana: "ぢ", roman: ["ji", "di"], korean: ["지", "디"] },
+  { kana: "づ", roman: ["zu", "du"], korean: ["즈", "두"] },
+  { kana: "で", roman: ["de"], korean: ["데"] },
+  { kana: "ど", roman: ["do"], korean: ["도"] },
+  { kana: "ば", roman: ["ba"], korean: ["바"] },
+  { kana: "び", roman: ["bi"], korean: ["비"] },
+  { kana: "ぶ", roman: ["bu"], korean: ["부"] },
+  { kana: "べ", roman: ["be"], korean: ["베"] },
+  { kana: "ぼ", roman: ["bo"], korean: ["보"] }
+];
+
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
+const dakutenToggle = document.getElementById("dakutenToggle");
 const submitButton = document.getElementById("submitButton");
 const revealButton = document.getElementById("revealButton");
 const nextButton = document.getElementById("nextButton");
@@ -56,6 +80,7 @@ const answerForm = document.getElementById("answerForm");
 const answerInput = document.getElementById("answerInput");
 const kanaDisplay = document.getElementById("kanaDisplay");
 const questionHint = document.getElementById("questionHint");
+const deckHint = document.getElementById("deckHint");
 const feedbackPanel = document.getElementById("feedbackPanel");
 const remainingCount = document.getElementById("remainingCount");
 const scoreCount = document.getElementById("scoreCount");
@@ -69,6 +94,7 @@ const state = {
   score: 0,
   streak: 0,
   answered: 0,
+  includeDakuten: false,
   running: false,
   awaitingNext: false,
   autoAdvanceTimer: null
@@ -96,6 +122,16 @@ function normalizeInput(value) {
   return value.trim().toLowerCase().replace(/\s+/g, "");
 }
 
+function getQuizPool() {
+  return state.includeDakuten
+    ? [...HIRAGANA_SET, ...DAKUTEN_SET]
+    : [...HIRAGANA_SET];
+}
+
+function getTotalQuestionCount() {
+  return getQuizPool().length;
+}
+
 function getAcceptedAnswers(item) {
   return [...item.roman, ...item.korean].map(normalizeInput);
 }
@@ -110,15 +146,16 @@ function setFeedback(message, tone = "neutral") {
 }
 
 function updateStatus() {
+  const totalQuestionCount = getTotalQuestionCount();
   const currentQuestionCountsAsRemaining =
     Boolean(state.current) && !state.awaitingNext ? 1 : 0;
 
   remainingCount.textContent = String(state.deck.length + currentQuestionCountsAsRemaining);
   scoreCount.textContent = String(state.score);
   streakCount.textContent = String(state.streak);
-  progressText.textContent = `${state.answered} / ${HIRAGANA_SET.length}`;
+  progressText.textContent = `${state.answered} / ${totalQuestionCount}`;
 
-  const progressRatio = (state.answered / HIRAGANA_SET.length) * 100;
+  const progressRatio = totalQuestionCount === 0 ? 0 : (state.answered / totalQuestionCount) * 100;
   progressFill.style.width = `${progressRatio}%`;
 }
 
@@ -132,6 +169,13 @@ function updateControls() {
   revealButton.disabled = !canAnswer;
   nextButton.disabled = !canMoveNext;
   restartButton.hidden = !canRestart;
+
+  dakutenToggle.setAttribute("aria-pressed", String(state.includeDakuten));
+  dakutenToggle.classList.toggle("is-active", state.includeDakuten);
+  dakutenToggle.textContent = `탁음 포함: ${state.includeDakuten ? "ON" : "OFF"}`;
+  deckHint.textContent = state.includeDakuten
+    ? `현재 문제풀: 기본 46자 + 탁음 ${DAKUTEN_SET.length}자`
+    : "현재 문제풀: 기본 46자";
 }
 
 function loadNextQuestion() {
@@ -154,6 +198,8 @@ function loadNextQuestion() {
 }
 
 function finishQuiz() {
+  const totalQuestionCount = getTotalQuestionCount();
+
   clearAutoAdvanceTimer();
   state.current = null;
   state.running = false;
@@ -162,7 +208,7 @@ function finishQuiz() {
   questionHint.textContent = "모든 문제를 완료했습니다. 다시 섞어서 한 번 더 풀 수 있습니다.";
   answerInput.value = "";
   setFeedback(
-    `퀴즈 종료. 총 ${HIRAGANA_SET.length}문제 중 ${state.score}개 정답입니다.`,
+    `퀴즈 종료. 총 ${totalQuestionCount}문제 중 ${state.score}개 정답입니다.`,
     "neutral"
   );
   updateStatus();
@@ -171,7 +217,7 @@ function finishQuiz() {
 
 function startQuiz() {
   clearAutoAdvanceTimer();
-  state.deck = shuffle(HIRAGANA_SET);
+  state.deck = shuffle(getQuizPool());
   state.current = null;
   state.score = 0;
   state.streak = 0;
@@ -245,8 +291,33 @@ function revealAnswer() {
   updateControls();
 }
 
+function toggleDakuten() {
+  state.includeDakuten = !state.includeDakuten;
+
+  if (state.running || state.answered > 0) {
+    startQuiz();
+    setFeedback(
+      state.includeDakuten
+        ? "탁음이 활성화되어 문제를 다시 섞었습니다."
+        : "탁음을 제외하고 기본 46자로 다시 섞었습니다.",
+      "neutral"
+    );
+    return;
+  }
+
+  updateStatus();
+  updateControls();
+  setFeedback(
+    state.includeDakuten
+      ? "탁음이 활성화되었습니다. 시작하면 기본 46자와 함께 출제됩니다."
+      : "탁음이 비활성화되었습니다. 기본 46자만 출제됩니다.",
+    "neutral"
+  );
+}
+
 startButton.addEventListener("click", startQuiz);
 restartButton.addEventListener("click", startQuiz);
+dakutenToggle.addEventListener("click", toggleDakuten);
 revealButton.addEventListener("click", revealAnswer);
 nextButton.addEventListener("click", loadNextQuestion);
 answerForm.addEventListener("submit", submitAnswer);

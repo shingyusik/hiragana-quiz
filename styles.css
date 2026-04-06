@@ -157,6 +157,12 @@ button:disabled {
   border: 1px solid rgba(159, 52, 23, 0.18);
 }
 
+.option-button.is-active {
+  color: #fff9f0;
+  background: linear-gradient(135deg, #b4542e, var(--accent-deep));
+  box-shadow: 0 12px 26px rgba(159, 52, 23, 0.18);
+}
+
 .quiz-grid {
   display: grid;
   grid-template-columns: 1.1fr 1.2fr;
@@ -197,6 +203,13 @@ button:disabled {
   margin: 16px 0 0;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.deck-hint {
+  margin: 10px 0 0;
+  color: var(--accent-deep);
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .answer-form {
