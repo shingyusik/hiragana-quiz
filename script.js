@@ -148,62 +148,386 @@ const CHOON_SET = [
   { kana: "こう", roman: ["kou"], korean: ["코우"] }
 ];
 
+const VOCAB_ITEMS = [
+  {
+    word: "あさ",
+    reading: "asa",
+    meaning: "아침",
+    example: "あさです。",
+    note: "시간 표현의 기본 단어입니다.",
+    kana: ["あ", "さ"]
+  },
+  {
+    word: "いえ",
+    reading: "ie",
+    meaning: "집",
+    example: "いえに かえります。",
+    note: "장소 표현에서 자주 나옵니다.",
+    kana: ["い", "え"]
+  },
+  {
+    word: "うみ",
+    reading: "umi",
+    meaning: "바다",
+    example: "うみが きれいです。",
+    note: "형용사 예문과 같이 외우기 좋습니다.",
+    kana: ["う", "み"]
+  },
+  {
+    word: "えき",
+    reading: "eki",
+    meaning: "역",
+    example: "えきは どこですか。",
+    note: "문법 패턴 `A は どこ ですか`와 잘 붙습니다.",
+    kana: ["え", "き"]
+  },
+  {
+    word: "おちゃ",
+    reading: "ocha",
+    meaning: "차, 녹차",
+    accepted: ["차", "녹차"],
+    example: "おちゃを のみます。",
+    note: "조사 `を`와 같이 복습하기 좋습니다.",
+    kana: ["お", "ちゃ"]
+  },
+  {
+    word: "かさ",
+    reading: "kasa",
+    meaning: "우산",
+    example: "かさを もっています。",
+    note: "가장 기본적인 생활 단어 중 하나입니다.",
+    kana: ["か", "さ"]
+  },
+  {
+    word: "きょう",
+    reading: "kyou",
+    meaning: "오늘",
+    example: "きょうは いそがしいです。",
+    note: "요음과 장음 느낌을 같이 익힐 수 있습니다.",
+    kana: ["きょ", "う"]
+  },
+  {
+    word: "くつ",
+    reading: "kutsu",
+    meaning: "신발",
+    example: "くつを ぬぎます。",
+    note: "`つ` 발음 연습에 좋습니다.",
+    kana: ["く", "つ"]
+  },
+  {
+    word: "さかな",
+    reading: "sakana",
+    meaning: "생선",
+    example: "さかなを たべます。",
+    note: "명사와 동사 연결 연습용으로 좋습니다.",
+    kana: ["さ", "か", "な"]
+  },
+  {
+    word: "しお",
+    reading: "shio",
+    meaning: "소금",
+    example: "しおを すこし いれます。",
+    note: "`し` 표기를 같이 익히기 좋습니다.",
+    kana: ["し", "お"]
+  },
+  {
+    word: "すし",
+    reading: "sushi",
+    meaning: "초밥",
+    example: "すしが すきです。",
+    note: "초급 회화에서 자주 쓰는 대표 단어입니다.",
+    kana: ["す", "し"]
+  },
+  {
+    word: "せんせい",
+    reading: "sensei",
+    meaning: "선생님",
+    example: "せんせいは しんせつです。",
+    note: "직업/호칭 표현으로 자주 나옵니다.",
+    kana: ["せ", "ん"]
+  },
+  {
+    word: "たまご",
+    reading: "tamago",
+    meaning: "달걀",
+    example: "たまごを かいます。",
+    note: "식재료 단어장에 자주 들어갑니다.",
+    kana: ["た", "ご"]
+  },
+  {
+    word: "ちず",
+    reading: "chizu",
+    meaning: "지도",
+    example: "ちずを みます。",
+    note: "`ち`와 `ず`를 같이 복습하기 좋습니다.",
+    kana: ["ち", "ず"]
+  },
+  {
+    word: "つき",
+    reading: "tsuki",
+    meaning: "달",
+    example: "つきが きれいです。",
+    note: "`tsu` 계열 읽기 훈련용입니다.",
+    kana: ["つ", "き"]
+  },
+  {
+    word: "てがみ",
+    reading: "tegami",
+    meaning: "편지",
+    example: "てがみを かきます。",
+    note: "동사 `かく`와 잘 묶입니다.",
+    kana: ["て", "が", "み"]
+  },
+  {
+    word: "とけい",
+    reading: "tokei",
+    meaning: "시계",
+    example: "とけいを みて ください。",
+    note: "시간 표현으로 확장하기 쉽습니다.",
+    kana: ["と", "けい"]
+  },
+  {
+    word: "ねこ",
+    reading: "neko",
+    meaning: "고양이",
+    example: "ねこが います。",
+    note: "`います` 패턴과 같이 외우기 좋습니다.",
+    kana: ["ね", "こ"]
+  },
+  {
+    word: "はな",
+    reading: "hana",
+    meaning: "꽃",
+    example: "はなが きれいです。",
+    note: "동음이의어도 있다는 점을 같이 기억하면 좋습니다.",
+    kana: ["は", "な"]
+  },
+  {
+    word: "ひと",
+    reading: "hito",
+    meaning: "사람",
+    example: "あの ひとは だれですか。",
+    note: "기본 명사 중 사용 빈도가 높습니다.",
+    kana: ["ひ", "と"]
+  },
+  {
+    word: "ふね",
+    reading: "fune",
+    meaning: "배",
+    accepted: ["배", "선박"],
+    example: "ふねで いきます。",
+    note: "`ふ`를 `fu`로 읽는 감각을 익히기 좋습니다.",
+    kana: ["ふ", "ね"]
+  },
+  {
+    word: "へや",
+    reading: "heya",
+    meaning: "방",
+    example: "へやが ひろいです。",
+    note: "장소 묘사 예문에서 자주 나옵니다.",
+    kana: ["へ", "や"]
+  },
+  {
+    word: "ほん",
+    reading: "hon",
+    meaning: "책",
+    example: "ほんを よみます。",
+    note: "목적어 조사와 같이 반복하기 좋습니다.",
+    kana: ["ほ", "ん"]
+  },
+  {
+    word: "みず",
+    reading: "mizu",
+    meaning: "물",
+    example: "みずを のみます。",
+    note: "가장 기본적인 생존 회화 단어입니다.",
+    kana: ["み", "ず"]
+  },
+  {
+    word: "やさい",
+    reading: "yasai",
+    meaning: "채소",
+    example: "やさいを たべます。",
+    note: "음식 단어 묶음으로 확장 가능합니다.",
+    kana: ["や", "さ"]
+  },
+  {
+    word: "ゆき",
+    reading: "yuki",
+    meaning: "눈",
+    example: "ゆきが ふっています。",
+    note: "날씨 표현과 함께 외우기 좋습니다.",
+    kana: ["ゆ", "き"]
+  },
+  {
+    word: "よる",
+    reading: "yoru",
+    meaning: "밤",
+    example: "よるに べんきょうします。",
+    note: "시간대 표현의 기본 단어입니다.",
+    kana: ["よ", "る"]
+  },
+  {
+    word: "りんご",
+    reading: "ringo",
+    meaning: "사과",
+    example: "りんごが すきです。",
+    note: "초급 단어장에서 매우 자주 나옵니다.",
+    kana: ["り", "ん", "ご"]
+  },
+  {
+    word: "れいぞうこ",
+    reading: "reizouko",
+    meaning: "냉장고",
+    example: "れいぞうこに あります。",
+    note: "생활 단어로 실전 활용도가 높습니다.",
+    kana: ["れ", "い", "ぞ", "う", "こ"]
+  },
+  {
+    word: "ろうか",
+    reading: "rouka",
+    meaning: "복도",
+    example: "ろうかを あるきます。",
+    note: "장음 `ou` 패턴을 같이 익힐 수 있습니다.",
+    kana: ["ろ", "う", "か"]
+  },
+  {
+    word: "おんがく",
+    reading: "ongaku",
+    meaning: "음악",
+    example: "おんがくを ききます。",
+    note: "`ん` 다음 자음 연결을 익히기 좋습니다.",
+    kana: ["お", "ん", "が", "く"]
+  },
+  {
+    word: "コーヒー",
+    reading: "koohii",
+    meaning: "커피",
+    example: "コーヒーを のみます。",
+    note: "카타카나 단어의 대표 예시입니다.",
+    kana: ["コ", "ヒ"]
+  },
+  {
+    word: "ケーキ",
+    reading: "keeki",
+    meaning: "케이크",
+    example: "ケーキを たべます。",
+    note: "장음 카타카나 단어입니다.",
+    kana: ["ケ", "キ"]
+  },
+  {
+    word: "ホテル",
+    reading: "hoteru",
+    meaning: "호텔",
+    example: "ホテルに とまります。",
+    note: "장소 표현과 같이 쓰기 좋습니다.",
+    kana: ["ホ", "テ", "ル"]
+  }
+];
+
+const KATAKANA_EXAMPLES = [
+  { word: "アイス", meaning: "아이스크림", kana: ["ア", "イ", "ス"] },
+  { word: "カメラ", meaning: "카메라", kana: ["カ", "メ", "ラ"] },
+  { word: "ケーキ", meaning: "케이크", kana: ["ケ", "キ"] },
+  { word: "コーヒー", meaning: "커피", kana: ["コ", "ヒ"] },
+  { word: "テレビ", meaning: "텔레비전", kana: ["テ", "レ"] },
+  { word: "ホテル", meaning: "호텔", kana: ["ホ", "テ", "ル"] },
+  { word: "バス", meaning: "버스", kana: ["バ", "ス"] },
+  { word: "パン", meaning: "빵", kana: ["パ", "ン"] },
+  { word: "ヨガ", meaning: "요가", kana: ["ヨ", "ガ"] },
+  { word: "レストラン", meaning: "레스토랑", kana: ["レ", "ト", "ラ", "ン"] }
+];
+
+const GRAMMAR_ITEMS = [
+  {
+    pattern: "A は B です",
+    meaning: "A는 B입니다",
+    note: "명사문 기본형입니다. 자기소개, 신분 설명에서 가장 먼저 씁니다.",
+    example: "わたし は がくせい です。"
+  },
+  {
+    pattern: "A は B では ありません",
+    meaning: "A는 B가 아닙니다",
+    note: "정중한 부정형입니다. 처음 배우는 문장 부정에 가장 적합합니다.",
+    example: "ここ は びょういん では ありません。"
+  },
+  {
+    pattern: "A を Vます",
+    meaning: "A를 V합니다",
+    note: "목적어 조사 `を`를 익히는 핵심 패턴입니다.",
+    example: "みず を のみます。"
+  },
+  {
+    pattern: "A に いきます / きます",
+    meaning: "A에 갑니다 / 옵니다",
+    note: "방향 또는 도착 지점을 나타낼 때 씁니다.",
+    example: "えき に いきます。"
+  },
+  {
+    pattern: "A が あります / います",
+    meaning: "A가 있습니다",
+    note: "사물은 `あります`, 사람과 동물은 `います`를 씁니다.",
+    example: "へや に ねこ が います。"
+  },
+  {
+    pattern: "A は どこ ですか",
+    meaning: "A는 어디입니까?",
+    note: "장소를 묻는 가장 기본적인 표현입니다.",
+    example: "えき は どこ ですか。"
+  }
+];
+
 const OPTION_CONFIG = {
-  dakuten: {
-    label: "탁음",
-    buttonId: "dakutenToggle",
-    count: () => DAKUTEN_SET.length
-  },
-  handakuten: {
-    label: "반탁음",
-    buttonId: "handakutenToggle",
-    count: () => HANDAKUTEN_SET.length
-  },
-  youon: {
-    label: "요음",
-    buttonId: "youonToggle",
-    count: (options) => {
-      let count = YOUON_SET.length;
+  dakuten: { label: "탁음", buttonId: "dakutenToggle" },
+  handakuten: { label: "반탁음", buttonId: "handakutenToggle" },
+  youon: { label: "요음", buttonId: "youonToggle" },
+  sokuon: { label: "촉음", buttonId: "sokuonToggle" },
+  choon: { label: "장음", buttonId: "choonToggle" }
+};
 
-      if (options.dakuten) {
-        count += DAKUTEN_YOUON_SET.length;
-      }
-
-      if (options.handakuten) {
-        count += HANDAKUTEN_YOUON_SET.length;
-      }
-
-      return count;
-    }
+const CATEGORY_CONFIG = {
+  hiragana: {
+    label: "히라가나",
+    description: "기본 문자와 확장 문자를 켜고 끄면서 읽기와 입력형 퀴즈를 연습합니다.",
+    type: "kana"
   },
-  sokuon: {
-    label: "촉음",
-    buttonId: "sokuonToggle",
-    count: () => SOKUON_SET.length
+  katakana: {
+    label: "카타카나",
+    description: "외래어 중심 문자를 학습하고 같은 구조의 입력형 퀴즈로 확인합니다.",
+    type: "kana"
   },
-  choon: {
-    label: "장음",
-    buttonId: "choonToggle",
-    count: () => CHOON_SET.length
+  vocab: {
+    label: "단어",
+    description: "읽기, 뜻, 예문을 보고 외운 뒤 뜻 맞히기 퀴즈로 확인합니다.",
+    type: "vocab"
+  },
+  grammar: {
+    label: "문법",
+    description: "기초 문형의 의미와 예문을 먼저 보고 객관식 퀴즈로 빠르게 점검합니다.",
+    type: "grammar"
   }
 };
 
-const startButton = document.getElementById("startButton");
-const restartButton = document.getElementById("restartButton");
-const submitButton = document.getElementById("submitButton");
-const revealButton = document.getElementById("revealButton");
-const nextButton = document.getElementById("nextButton");
-const answerForm = document.getElementById("answerForm");
-const answerInput = document.getElementById("answerInput");
-const kanaDisplay = document.getElementById("kanaDisplay");
-const questionHint = document.getElementById("questionHint");
-const deckHint = document.getElementById("deckHint");
-const feedbackPanel = document.getElementById("feedbackPanel");
-const remainingCount = document.getElementById("remainingCount");
-const scoreCount = document.getElementById("scoreCount");
-const streakCount = document.getElementById("streakCount");
-const progressText = document.getElementById("progressText");
-const progressFill = document.getElementById("progressFill");
+const heroContext = document.getElementById("heroContext");
+const optionToolbar = document.getElementById("optionToolbar");
+const mainCardLabel = document.getElementById("mainCardLabel");
+const actionCardLabel = document.getElementById("actionCardLabel");
+const mainPanel = document.getElementById("mainPanel");
+const actionPanel = document.getElementById("actionPanel");
+const statusPanel = document.getElementById("statusPanel");
+const notePanel = document.getElementById("notePanel");
+
+const categoryButtons = {
+  hiragana: document.getElementById("categoryHiragana"),
+  katakana: document.getElementById("categoryKatakana"),
+  vocab: document.getElementById("categoryVocab"),
+  grammar: document.getElementById("categoryGrammar")
+};
+
+const modeButtons = {
+  learn: document.getElementById("modeLearn"),
+  quiz: document.getElementById("modeQuiz")
+};
 
 const optionButtons = Object.fromEntries(
   Object.entries(OPTION_CONFIG).map(([key, config]) => [
@@ -212,28 +536,51 @@ const optionButtons = Object.fromEntries(
   ])
 );
 
-const state = {
-  deck: [],
-  current: null,
-  score: 0,
-  streak: 0,
-  answered: 0,
-  options: {
+function createDefaultKanaOptions() {
+  return {
     dakuten: false,
     handakuten: false,
     youon: false,
     sokuon: false,
     choon: false
+  };
+}
+
+function createEmptyQuizState() {
+  return {
+    running: false,
+    deck: [],
+    current: null,
+    answered: 0,
+    score: 0,
+    streak: 0,
+    awaitingNext: false,
+    autoAdvanceTimer: null,
+    message: "",
+    tone: "neutral"
+  };
+}
+
+const state = {
+  category: "hiragana",
+  mode: "learn",
+  learnIndexByCategory: {
+    hiragana: 0,
+    katakana: 0,
+    vocab: 0,
+    grammar: 0
   },
-  running: false,
-  awaitingNext: false,
-  autoAdvanceTimer: null
+  categoryOptions: {
+    hiragana: createDefaultKanaOptions(),
+    katakana: createDefaultKanaOptions()
+  },
+  quiz: createEmptyQuizState()
 };
 
 function clearAutoAdvanceTimer() {
-  if (state.autoAdvanceTimer) {
-    window.clearTimeout(state.autoAdvanceTimer);
-    state.autoAdvanceTimer = null;
+  if (state.quiz.autoAdvanceTimer) {
+    window.clearTimeout(state.quiz.autoAdvanceTimer);
+    state.quiz.autoAdvanceTimer = null;
   }
 }
 
@@ -249,254 +596,989 @@ function shuffle(items) {
 }
 
 function normalizeInput(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, "");
+  return value.trim().toLowerCase().replace(/[\s.,/·:;!?-]/g, "");
 }
 
-function getQuizPool() {
-  const pool = [...HIRAGANA_SET];
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
-  if (state.options.dakuten) {
-    pool.push(...DAKUTEN_SET);
+function toKatakana(text) {
+  return text.replace(/[\u3041-\u3096]/g, (char) =>
+    String.fromCharCode(char.charCodeAt(0) + 0x60)
+  );
+}
+
+function mapKanaScript(items) {
+  return items.map((item) => ({
+    ...item,
+    kana: toKatakana(item.kana)
+  }));
+}
+
+const KANA_SETS = {
+  hiragana: {
+    base: HIRAGANA_SET,
+    dakuten: DAKUTEN_SET,
+    handakuten: HANDAKUTEN_SET,
+    youon: YOUON_SET,
+    dakutenYouon: DAKUTEN_YOUON_SET,
+    handakutenYouon: HANDAKUTEN_YOUON_SET,
+    sokuon: SOKUON_SET,
+    choon: CHOON_SET
+  },
+  katakana: {
+    base: mapKanaScript(HIRAGANA_SET),
+    dakuten: mapKanaScript(DAKUTEN_SET),
+    handakuten: mapKanaScript(HANDAKUTEN_SET),
+    youon: mapKanaScript(YOUON_SET),
+    dakutenYouon: mapKanaScript(DAKUTEN_YOUON_SET),
+    handakutenYouon: mapKanaScript(HANDAKUTEN_YOUON_SET),
+    sokuon: mapKanaScript(SOKUON_SET),
+    choon: mapKanaScript(CHOON_SET)
   }
+};
 
-  if (state.options.handakuten) {
-    pool.push(...HANDAKUTEN_SET);
-  }
+function getQuizIdleMessage() {
+  return `${CATEGORY_CONFIG[state.category].label} 퀴즈를 시작하면 문제가 랜덤으로 출제됩니다.`;
+}
 
-  if (state.options.youon) {
-    pool.push(...YOUON_SET);
+function resetQuiz(customMessage) {
+  clearAutoAdvanceTimer();
+  state.quiz = createEmptyQuizState();
+  state.quiz.message = customMessage || getQuizIdleMessage();
+}
 
-    if (state.options.dakuten) {
-      pool.push(...DAKUTEN_YOUON_SET);
+function getCategoryItems(category) {
+  if (category === "hiragana" || category === "katakana") {
+    const sets = KANA_SETS[category];
+    const options = state.categoryOptions[category];
+    const pool = [...sets.base];
+
+    if (options.dakuten) {
+      pool.push(...sets.dakuten);
     }
 
-    if (state.options.handakuten) {
-      pool.push(...HANDAKUTEN_YOUON_SET);
+    if (options.handakuten) {
+      pool.push(...sets.handakuten);
     }
+
+    if (options.youon) {
+      pool.push(...sets.youon);
+
+      if (options.dakuten) {
+        pool.push(...sets.dakutenYouon);
+      }
+
+      if (options.handakuten) {
+        pool.push(...sets.handakutenYouon);
+      }
+    }
+
+    if (options.sokuon) {
+      pool.push(...sets.sokuon);
+    }
+
+    if (options.choon) {
+      pool.push(...sets.choon);
+    }
+
+    return pool;
   }
 
-  if (state.options.sokuon) {
-    pool.push(...SOKUON_SET);
+  if (category === "vocab") {
+    return VOCAB_ITEMS;
   }
 
-  if (state.options.choon) {
-    pool.push(...CHOON_SET);
-  }
-
-  return pool;
+  return GRAMMAR_ITEMS;
 }
 
-function getTotalQuestionCount() {
-  return getQuizPool().length;
-}
-
-function getDeckSummary() {
+function getKanaDeckSummary(category) {
+  const options = state.categoryOptions[category];
   const summary = ["기본 46자"];
 
   Object.entries(OPTION_CONFIG).forEach(([key, config]) => {
-    if (!state.options[key]) {
-      return;
+    if (options[key]) {
+      summary.push(config.label);
     }
-
-    summary.push(`${config.label} ${config.count(state.options)}자`);
   });
 
-  return `현재 문제풀: ${summary.join(" + ")}`;
+  return summary.join(" + ");
 }
 
-function getAcceptedAnswers(item) {
-  return [...item.roman, ...item.korean].map(normalizeInput);
+function ensureLearnIndexInRange(category) {
+  const items = getCategoryItems(category);
+  const maxIndex = Math.max(items.length - 1, 0);
+  const currentIndex = state.learnIndexByCategory[category] ?? 0;
+  state.learnIndexByCategory[category] = Math.min(Math.max(currentIndex, 0), maxIndex);
 }
 
-function formatAnswers(item) {
-  return `영문: ${item.roman.join(", ")} / 한글: ${item.korean.join(", ")}`;
+function getCurrentLearnItem() {
+  const items = getCategoryItems(state.category);
+  const index = state.learnIndexByCategory[state.category];
+  return items[index];
 }
 
-function setFeedback(message, tone = "neutral") {
-  feedbackPanel.className = `feedback-panel ${tone}`;
-  feedbackPanel.textContent = message;
+function getAcceptedKanaAnswers(item) {
+  return [...item.roman, ...item.korean];
 }
 
-function updateStatus() {
-  const totalQuestionCount = getTotalQuestionCount();
-  const currentQuestionCountsAsRemaining =
-    Boolean(state.current) && !state.awaitingNext ? 1 : 0;
+function getAcceptedVocabAnswers(item) {
+  if (item.accepted) {
+    return item.accepted;
+  }
 
-  remainingCount.textContent = String(state.deck.length + currentQuestionCountsAsRemaining);
-  scoreCount.textContent = String(state.score);
-  streakCount.textContent = String(state.streak);
-  progressText.textContent = `${state.answered} / ${totalQuestionCount}`;
-
-  const progressRatio = totalQuestionCount === 0 ? 0 : (state.answered / totalQuestionCount) * 100;
-  progressFill.style.width = `${progressRatio}%`;
+  return item.meaning
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
 }
 
-function updateControls() {
-  const canAnswer = state.running && Boolean(state.current) && !state.awaitingNext;
-  const canMoveNext = state.running && state.awaitingNext;
-  const canRestart = state.running || state.answered > 0;
+function buildQuizQuestion(item) {
+  if (CATEGORY_CONFIG[state.category].type === "kana") {
+    return {
+      kind: "text",
+      item,
+      prompt: item.kana,
+      promptClass: "",
+      helper: "발음을 영어 또는 한글로 입력하세요.",
+      placeholder: "예: shi / 시",
+      accepted: getAcceptedKanaAnswers(item)
+    };
+  }
 
-  answerInput.disabled = !canAnswer;
-  submitButton.disabled = !canAnswer;
-  revealButton.disabled = !canAnswer;
-  nextButton.disabled = !canMoveNext;
-  restartButton.hidden = !canRestart;
-  deckHint.textContent = getDeckSummary();
+  if (state.category === "vocab") {
+    return {
+      kind: "text",
+      item,
+      prompt: item.word,
+      promptClass: "is-text",
+      helper: "뜻을 한국어로 입력하세요.",
+      placeholder: "예: 우산",
+      accepted: getAcceptedVocabAnswers(item)
+    };
+  }
 
-  Object.entries(OPTION_CONFIG).forEach(([key, config]) => {
-    const button = optionButtons[key];
-    const enabled = state.options[key];
+  const distractors = shuffle(
+    GRAMMAR_ITEMS.filter((candidate) => candidate.pattern !== item.pattern).map(
+      (candidate) => candidate.meaning
+    )
+  ).slice(0, 3);
 
-    button.setAttribute("aria-pressed", String(enabled));
-    button.classList.toggle("is-active", enabled);
-    button.textContent = `${config.label}: ${enabled ? "ON" : "OFF"}`;
-  });
+  return {
+    kind: "choice",
+    item,
+    prompt: item.pattern,
+    promptClass: "is-text",
+    helper: item.example,
+    choices: shuffle([item.meaning, ...distractors]),
+    accepted: item.meaning
+  };
+}
+
+function formatQuestionAnswer(question) {
+  if (!question) {
+    return "";
+  }
+
+  if (CATEGORY_CONFIG[state.category].type === "kana") {
+    return `${question.item.kana}의 정답은 영문 ${question.item.roman.join(", ")} / 한글 ${question.item.korean.join(", ")} 입니다.`;
+  }
+
+  if (state.category === "vocab") {
+    return `${question.item.word}의 뜻은 ${question.item.meaning}이고 읽기는 ${question.item.reading}입니다.`;
+  }
+
+  return `${question.item.pattern}의 뜻은 ${question.item.meaning}입니다. ${question.item.note}`;
+}
+
+function setQuizMessage(message, tone = "neutral") {
+  state.quiz.message = message;
+  state.quiz.tone = tone;
 }
 
 function loadNextQuestion() {
   clearAutoAdvanceTimer();
 
-  if (state.deck.length === 0) {
+  if (state.quiz.deck.length === 0) {
     finishQuiz();
     return;
   }
 
-  state.current = state.deck.pop();
-  state.awaitingNext = false;
-  kanaDisplay.textContent = state.current.kana;
-  questionHint.textContent = "발음을 영어 또는 한글로 입력한 뒤 정답 확인을 누르세요.";
-  answerInput.value = "";
-  setFeedback("정답을 입력해보세요.", "neutral");
-  updateStatus();
-  updateControls();
-  answerInput.focus();
-}
-
-function finishQuiz() {
-  const totalQuestionCount = getTotalQuestionCount();
-
-  clearAutoAdvanceTimer();
-  state.current = null;
-  state.running = false;
-  state.awaitingNext = false;
-  kanaDisplay.textContent = "끝";
-  questionHint.textContent = "모든 문제를 완료했습니다. 다시 섞어서 한 번 더 풀 수 있습니다.";
-  answerInput.value = "";
-  setFeedback(
-    `퀴즈 종료. 총 ${totalQuestionCount}문제 중 ${state.score}개 정답입니다.`,
-    "neutral"
-  );
-  updateStatus();
-  updateControls();
+  const rawItem = state.quiz.deck.pop();
+  state.quiz.current = buildQuizQuestion(rawItem);
+  state.quiz.awaitingNext = false;
+  setQuizMessage(state.quiz.current.helper, "neutral");
+  renderApp();
+  focusAnswerInput();
 }
 
 function startQuiz() {
-  clearAutoAdvanceTimer();
-  state.deck = shuffle(getQuizPool());
-  state.current = null;
-  state.score = 0;
-  state.streak = 0;
-  state.answered = 0;
-  state.running = true;
-  state.awaitingNext = false;
+  const items = shuffle(getCategoryItems(state.category));
 
+  if (items.length === 0) {
+    return;
+  }
+
+  resetQuiz();
+  state.quiz.running = true;
+  state.quiz.deck = items;
   loadNextQuestion();
 }
 
-function submitAnswer(event) {
-  event.preventDefault();
+function finishQuiz() {
+  const total = state.quiz.answered;
+  clearAutoAdvanceTimer();
+  state.quiz.running = false;
+  state.quiz.current = null;
+  state.quiz.awaitingNext = false;
+  setQuizMessage(`퀴즈 종료. 총 ${total}문제 중 ${state.quiz.score}개 정답입니다.`, "neutral");
+  renderApp();
+}
 
-  if (!state.current || state.awaitingNext) {
+function submitTextAnswer(value) {
+  const question = state.quiz.current;
+
+  if (!question || state.quiz.awaitingNext) {
     return;
   }
 
-  const userAnswer = normalizeInput(answerInput.value);
+  const normalizedAnswer = normalizeInput(value);
 
-  if (!userAnswer) {
-    setFeedback("입력을 비워둘 수 없습니다. 발음을 적어주세요.", "wrong");
+  if (!normalizedAnswer) {
+    setQuizMessage("입력을 비워둘 수 없습니다. 답을 적어주세요.", "wrong");
+    renderApp();
+    focusAnswerInput();
     return;
   }
 
-  const acceptedAnswers = getAcceptedAnswers(state.current);
-  const isCorrect = acceptedAnswers.includes(userAnswer);
+  const isCorrect = question.accepted.some(
+    (candidate) => normalizeInput(candidate) === normalizedAnswer
+  );
 
-  state.answered += 1;
-  state.awaitingNext = true;
+  state.quiz.answered += 1;
+  state.quiz.awaitingNext = true;
 
   if (isCorrect) {
-    state.score += 1;
-    state.streak += 1;
-    setFeedback(
-      `정답입니다. ${state.current.kana}의 허용 표기는 ${formatAnswers(state.current)} 입니다. 곧 다음 문제로 넘어갑니다.`,
-      "correct"
-    );
-    state.autoAdvanceTimer = window.setTimeout(() => {
-      state.autoAdvanceTimer = null;
+    state.quiz.score += 1;
+    state.quiz.streak += 1;
+    setQuizMessage(`정답입니다. ${formatQuestionAnswer(question)}`, "correct");
+    state.quiz.autoAdvanceTimer = window.setTimeout(() => {
+      state.quiz.autoAdvanceTimer = null;
       loadNextQuestion();
     }, 900);
   } else {
-    state.streak = 0;
-    setFeedback(
-      `오답입니다. ${state.current.kana}의 정답은 ${formatAnswers(state.current)} 입니다.`,
-      "wrong"
-    );
+    state.quiz.streak = 0;
+    setQuizMessage(`오답입니다. ${formatQuestionAnswer(question)}`, "wrong");
   }
 
-  updateStatus();
-  updateControls();
+  renderApp();
+}
+
+function submitChoiceAnswer(choice) {
+  const question = state.quiz.current;
+
+  if (!question || state.quiz.awaitingNext) {
+    return;
+  }
+
+  const isCorrect = choice === question.accepted;
+
+  state.quiz.answered += 1;
+  state.quiz.awaitingNext = true;
+
+  if (isCorrect) {
+    state.quiz.score += 1;
+    state.quiz.streak += 1;
+    setQuizMessage(`정답입니다. ${formatQuestionAnswer(question)}`, "correct");
+    state.quiz.autoAdvanceTimer = window.setTimeout(() => {
+      state.quiz.autoAdvanceTimer = null;
+      loadNextQuestion();
+    }, 1000);
+  } else {
+    state.quiz.streak = 0;
+    setQuizMessage(`오답입니다. ${formatQuestionAnswer(question)}`, "wrong");
+  }
+
+  renderApp();
 }
 
 function revealAnswer() {
-  if (!state.current || state.awaitingNext) {
+  const question = state.quiz.current;
+
+  if (!question || state.quiz.awaitingNext) {
     return;
   }
 
   clearAutoAdvanceTimer();
-  state.answered += 1;
-  state.streak = 0;
-  state.awaitingNext = true;
-  answerInput.value = "";
-
-  setFeedback(
-    `정답 공개. ${state.current.kana}의 정답은 ${formatAnswers(state.current)} 입니다.`,
-    "neutral"
-  );
-
-  updateStatus();
-  updateControls();
+  state.quiz.answered += 1;
+  state.quiz.streak = 0;
+  state.quiz.awaitingNext = true;
+  setQuizMessage(`정답 공개. ${formatQuestionAnswer(question)}`, "neutral");
+  renderApp();
 }
 
-function toggleOption(key) {
-  const label = OPTION_CONFIG[key].label;
+function focusAnswerInput() {
+  const input = document.getElementById("quizAnswerInput");
 
-  state.options[key] = !state.options[key];
+  if (input && !input.disabled) {
+    input.focus();
+  }
+}
 
-  if (state.running || state.answered > 0) {
-    startQuiz();
-    setFeedback(
-      `${label}을 ${state.options[key] ? "활성화" : "비활성화"}하고 문제를 다시 섞었습니다.`,
-      "neutral"
-    );
+function setCategory(category) {
+  if (state.category === category) {
     return;
   }
 
-  updateStatus();
-  updateControls();
-  setFeedback(
-    `${label}이 ${state.options[key] ? "활성화" : "비활성화"}되었습니다.`,
-    "neutral"
-  );
+  state.category = category;
+  ensureLearnIndexInRange(category);
+  resetQuiz(`${CATEGORY_CONFIG[category].label}로 이동했습니다. 퀴즈는 새로 시작됩니다.`);
+  renderApp();
 }
 
-startButton.addEventListener("click", startQuiz);
-restartButton.addEventListener("click", startQuiz);
-revealButton.addEventListener("click", revealAnswer);
-nextButton.addEventListener("click", loadNextQuestion);
-answerForm.addEventListener("submit", submitAnswer);
+function setMode(mode) {
+  if (state.mode === mode) {
+    return;
+  }
 
-Object.keys(OPTION_CONFIG).forEach((key) => {
-  optionButtons[key].addEventListener("click", () => toggleOption(key));
+  state.mode = mode;
+  resetQuiz();
+  renderApp();
+}
+
+function moveLearnIndex(direction) {
+  const items = getCategoryItems(state.category);
+
+  if (items.length === 0) {
+    return;
+  }
+
+  const currentIndex = state.learnIndexByCategory[state.category];
+  const nextIndex = (currentIndex + direction + items.length) % items.length;
+  state.learnIndexByCategory[state.category] = nextIndex;
+  renderApp();
+}
+
+function randomizeLearnIndex() {
+  const items = getCategoryItems(state.category);
+
+  if (items.length === 0) {
+    return;
+  }
+
+  state.learnIndexByCategory[state.category] = Math.floor(Math.random() * items.length);
+  renderApp();
+}
+
+function toggleKanaOption(key) {
+  if (state.category !== "hiragana") {
+    return;
+  }
+
+  state.categoryOptions[state.category][key] = !state.categoryOptions[state.category][key];
+  ensureLearnIndexInRange(state.category);
+  resetQuiz("출제 범위를 변경했습니다. 퀴즈는 다시 시작됩니다.");
+  renderApp();
+}
+
+function renderHeroContext() {
+  let context = CATEGORY_CONFIG[state.category].description;
+
+  if (state.category === "hiragana") {
+    context += ` 현재 범위: ${getKanaDeckSummary(state.category)}.`;
+  }
+
+  context += ` 지금은 ${state.mode === "learn" ? "학습" : "퀴즈"} 모드입니다.`;
+  heroContext.textContent = context;
+}
+
+function renderStaticUi() {
+  Object.entries(categoryButtons).forEach(([key, button]) => {
+    const isActive = state.category === key;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+
+  Object.entries(modeButtons).forEach(([key, button]) => {
+    const isActive = state.mode === key;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+
+  const showOptionToolbar = state.category === "hiragana";
+  optionToolbar.hidden = !showOptionToolbar;
+  optionToolbar.style.display = showOptionToolbar ? "flex" : "none";
+
+  if (showOptionToolbar) {
+    Object.entries(OPTION_CONFIG).forEach(([key, config]) => {
+      const button = optionButtons[key];
+      const enabled = state.categoryOptions[state.category][key];
+      button.classList.toggle("is-active", enabled);
+      button.setAttribute("aria-pressed", String(enabled));
+      button.textContent = `${config.label}: ${enabled ? "ON" : "OFF"}`;
+    });
+  }
+
+  renderHeroContext();
+}
+
+function renderKanaLearn(item) {
+  const relatedItems =
+    state.category === "hiragana"
+      ? VOCAB_ITEMS.filter(
+          (vocab) => vocab.word.includes(item.kana) || vocab.kana.includes(item.kana)
+        ).slice(0, 3)
+      : KATAKANA_EXAMPLES.filter(
+          (example) => example.word.includes(item.kana) || example.kana.includes(item.kana)
+        ).slice(0, 3);
+
+  const relatedMarkup =
+    relatedItems.length > 0
+      ? `
+        <div class="info-panel">
+          <h3 class="stage-heading">연결 예시</h3>
+          <p class="stage-copy">해당 문자가 포함된 단어나 외래어 예시를 같이 보세요.</p>
+          <div class="tag-list">
+            ${relatedItems
+              .map(
+                (example) =>
+                  `<span class="tag-chip">${escapeHtml(example.word)} · ${escapeHtml(example.meaning)}</span>`
+              )
+              .join("")}
+          </div>
+        </div>
+      `
+      : `
+        <div class="info-panel">
+          <h3 class="stage-heading">학습 포인트</h3>
+          <p class="stage-copy">이 문자는 발음과 허용 입력 표기를 먼저 익힌 뒤, 바로 퀴즈에서 입력해보는 방식이 가장 효율적입니다.</p>
+        </div>
+      `;
+
+  return `
+    <div class="learn-stage">
+      <div>
+        <h2 class="stage-heading">${CATEGORY_CONFIG[state.category].label} 문자 학습</h2>
+        <p class="stage-copy">현재 선택한 문자 범위를 기준으로 한 글자씩 집중해서 외웁니다.</p>
+      </div>
+      <div class="symbol-frame">
+        <div class="learn-symbol">${escapeHtml(item.kana)}</div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-pill">영문 ${escapeHtml(item.roman.join(", "))}</span>
+        <span class="meta-pill">한글 ${escapeHtml(item.korean.join(", "))}</span>
+      </div>
+      ${relatedMarkup}
+    </div>
+  `;
+}
+
+function renderVocabLearn(item) {
+  return `
+    <div class="learn-stage">
+      <div>
+        <h2 class="stage-heading">단어 학습</h2>
+        <p class="stage-copy">읽기, 뜻, 예문을 한 묶음으로 익힌 뒤 뜻 맞히기 퀴즈로 넘어가세요.</p>
+      </div>
+      <div class="symbol-frame">
+        <div class="prompt-main is-text">${escapeHtml(item.word)}</div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-pill">읽기 ${escapeHtml(item.reading)}</span>
+        <span class="meta-pill">뜻 ${escapeHtml(item.meaning)}</span>
+      </div>
+      <div class="info-panel">
+        <h3 class="stage-heading">예문과 메모</h3>
+        <p class="stage-copy">${escapeHtml(item.example)}</p>
+        <p class="helper-copy">${escapeHtml(item.note)}</p>
+        <div class="tag-list">
+          ${item.kana.map((kana) => `<span class="tag-chip">${escapeHtml(kana)}</span>`).join("")}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderGrammarLearn(item) {
+  return `
+    <div class="learn-stage">
+      <div>
+        <h2 class="stage-heading">문법 학습</h2>
+        <p class="stage-copy">문형의 의미를 먼저 잡고 예문으로 쓰임을 확인한 다음 객관식 퀴즈로 검증합니다.</p>
+      </div>
+      <div class="symbol-frame">
+        <div class="prompt-main is-text">${escapeHtml(item.pattern)}</div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-pill">의미 ${escapeHtml(item.meaning)}</span>
+      </div>
+      <div class="info-panel">
+        <h3 class="stage-heading">핵심 설명</h3>
+        <p class="stage-copy">${escapeHtml(item.note)}</p>
+        <p class="helper-copy">${escapeHtml(item.example)}</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderLearnMainPanel() {
+  const item = getCurrentLearnItem();
+
+  if (!item) {
+    return '<div class="empty-card">표시할 학습 항목이 없습니다.</div>';
+  }
+
+  if (CATEGORY_CONFIG[state.category].type === "kana") {
+    return renderKanaLearn(item);
+  }
+
+  if (state.category === "vocab") {
+    return renderVocabLearn(item);
+  }
+
+  return renderGrammarLearn(item);
+}
+
+function renderLearnActionPanel() {
+  const items = getCategoryItems(state.category);
+  const currentIndex = state.learnIndexByCategory[state.category] + 1;
+  const item = getCurrentLearnItem();
+  const detail =
+    state.category === "hiragana"
+      ? `현재 범위는 ${getKanaDeckSummary(state.category)}이며 총 ${items.length}문자가 포함됩니다.`
+      : `현재 항목의 핵심은 ${
+          state.category === "katakana"
+            ? "외래어 예시와 함께 문자를 모양째 익히는 것"
+            : state.category === "vocab"
+              ? "뜻과 읽기를 같이 묶어 기억하는 것"
+              : "문형의 의미와 쓰임을 동시에 익히는 것"
+        }입니다.`;
+
+  const currentTitle =
+    state.category === "grammar"
+      ? item.pattern
+      : item.word || item.kana;
+
+  return `
+    <div class="action-stack">
+      <div class="info-panel">
+        <h3 class="stage-heading">현재 포커스</h3>
+        <p class="stage-copy">${escapeHtml(currentTitle)}</p>
+        <p class="helper-copy">${escapeHtml(detail)}</p>
+      </div>
+      <div class="info-panel">
+        <h3 class="stage-heading">학습 이동</h3>
+        <p class="helper-copy">이전/다음으로 넘기거나 랜덤으로 섞어서 훑을 수 있습니다.</p>
+        <div class="action-row">
+          <button class="ghost-button" type="button" data-action="prev-learn">이전</button>
+          <button class="primary-button" type="button" data-action="next-learn">다음</button>
+          <button class="ghost-button" type="button" data-action="random-learn">랜덤</button>
+          <button class="ghost-button" type="button" data-action="go-quiz">퀴즈로 전환</button>
+        </div>
+      </div>
+      <div class="feedback-panel neutral">
+        ${currentIndex} / ${items.length}번째 항목입니다.
+      </div>
+    </div>
+  `;
+}
+
+function renderQuizMainPanel() {
+  const question = state.quiz.current;
+
+  if (!state.quiz.running && !question) {
+    return `
+      <div class="quiz-stage">
+        <div>
+          <h2 class="stage-heading">${CATEGORY_CONFIG[state.category].label} 퀴즈 준비</h2>
+          <p class="stage-copy">${escapeHtml(getQuizIdleMessage())}</p>
+        </div>
+        <div class="prompt-frame">
+          <div class="prompt-main is-text">Start</div>
+        </div>
+        <div class="info-panel">
+          <h3 class="stage-heading">출제 방식</h3>
+          <p class="stage-copy">${escapeHtml(CATEGORY_CONFIG[state.category].description)}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="quiz-stage">
+      <div>
+        <h2 class="stage-heading">${CATEGORY_CONFIG[state.category].label} 퀴즈</h2>
+        <p class="stage-copy">${escapeHtml(question.helper)}</p>
+      </div>
+      <div class="prompt-frame">
+        <div class="${CATEGORY_CONFIG[state.category].type === "kana" ? "quiz-symbol" : "prompt-main"} ${escapeHtml(question.promptClass)}">
+          ${escapeHtml(question.prompt)}
+        </div>
+      </div>
+      <div class="info-panel">
+        <h3 class="stage-heading">문제 힌트</h3>
+        <p class="stage-copy">${escapeHtml(question.helper)}</p>
+        ${
+          question.kind === "choice"
+            ? `<p class="helper-copy">${escapeHtml(question.item.example)}</p>`
+            : ""
+        }
+      </div>
+    </div>
+  `;
+}
+
+function renderQuizActionPanel() {
+  const question = state.quiz.current;
+
+  if (!state.quiz.running && !question) {
+    return `
+      <div class="action-stack">
+        <div class="info-panel">
+          <h3 class="stage-heading">퀴즈 시작</h3>
+          <p class="stage-copy">현재 과목의 문제를 섞어서 순서대로 출제합니다.</p>
+          <div class="action-row">
+            <button class="primary-button" type="button" data-action="start-quiz">퀴즈 시작</button>
+          </div>
+        </div>
+        <div class="feedback-panel ${escapeHtml(state.quiz.tone)}">
+          ${escapeHtml(state.quiz.message)}
+        </div>
+      </div>
+    `;
+  }
+
+  if (question.kind === "text") {
+    return `
+      <div class="action-stack">
+        <form id="quizAnswerForm" class="action-form" autocomplete="off">
+          <input
+            id="quizAnswerInput"
+            class="answer-input"
+            type="text"
+            name="answer"
+            placeholder="${escapeHtml(question.placeholder)}"
+            ${state.quiz.awaitingNext ? "disabled" : ""}
+          />
+          <div class="action-row">
+            <button class="primary-button" type="submit" ${state.quiz.awaitingNext ? "disabled" : ""}>
+              정답 확인
+            </button>
+            <button class="ghost-button" type="button" data-action="reveal-answer" ${
+              state.quiz.awaitingNext ? "disabled" : ""
+            }>
+              정답 보기
+            </button>
+            <button class="ghost-button" type="button" data-action="next-question" ${
+              state.quiz.awaitingNext ? "" : "disabled"
+            }>
+              다음 문제
+            </button>
+            <button class="ghost-button" type="button" data-action="restart-quiz">다시 섞기</button>
+          </div>
+        </form>
+        <div class="feedback-panel ${escapeHtml(state.quiz.tone)}">
+          ${escapeHtml(state.quiz.message)}
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="action-stack">
+      <div class="info-panel">
+        <h3 class="stage-heading">뜻 고르기</h3>
+        <div class="choice-list">
+          ${question.choices
+            .map(
+              (choice) => `
+                <button
+                  class="choice-button"
+                  type="button"
+                  data-choice="${escapeHtml(choice)}"
+                  ${state.quiz.awaitingNext ? "disabled" : ""}
+                >
+                  ${escapeHtml(choice)}
+                </button>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
+      <div class="action-row">
+        <button class="ghost-button" type="button" data-action="reveal-answer" ${
+          state.quiz.awaitingNext ? "disabled" : ""
+        }>
+          정답 보기
+        </button>
+        <button class="ghost-button" type="button" data-action="next-question" ${
+          state.quiz.awaitingNext ? "" : "disabled"
+        }>
+          다음 문제
+        </button>
+        <button class="ghost-button" type="button" data-action="restart-quiz">다시 섞기</button>
+      </div>
+      <div class="feedback-panel ${escapeHtml(state.quiz.tone)}">
+        ${escapeHtml(state.quiz.message)}
+      </div>
+    </div>
+  `;
+}
+
+function renderMainPanel() {
+  mainCardLabel.textContent = `${CATEGORY_CONFIG[state.category].label} ${state.mode === "learn" ? "학습" : "퀴즈"}`;
+  actionCardLabel.textContent =
+    state.mode === "learn"
+      ? "학습 컨트롤"
+      : state.category === "grammar"
+        ? "문항 선택"
+        : "정답 입력";
+
+  mainPanel.innerHTML = state.mode === "learn" ? renderLearnMainPanel() : renderQuizMainPanel();
+  actionPanel.innerHTML = state.mode === "learn" ? renderLearnActionPanel() : renderQuizActionPanel();
+}
+
+function renderStatusPanel() {
+  const items = getCategoryItems(state.category);
+
+  if (state.mode === "learn") {
+    const currentIndex = items.length === 0 ? 0 : state.learnIndexByCategory[state.category] + 1;
+    const thirdStat =
+      state.category === "hiragana"
+        ? getKanaDeckSummary(state.category)
+        : state.category === "katakana"
+          ? "기본 카타카나"
+        : state.category === "vocab"
+          ? "읽기·뜻·예문"
+          : "문형·의미·예문";
+
+    statusPanel.innerHTML = `
+      <div class="status-grid">
+        <div class="stat-item">
+          <span class="stat-name">총 항목</span>
+          <strong>${items.length}</strong>
+        </div>
+        <div class="stat-item">
+          <span class="stat-name">현재 위치</span>
+          <strong>${currentIndex}</strong>
+        </div>
+        <div class="stat-item">
+          <span class="stat-name">학습 포커스</span>
+          <strong class="stat-copy">${escapeHtml(thirdStat)}</strong>
+        </div>
+      </div>
+      <div class="progress-area">
+        <div class="progress-meta">
+          <span>학습 진행</span>
+          <span>${currentIndex} / ${items.length}</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${items.length === 0 ? 0 : (currentIndex / items.length) * 100}%"></div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const remainingCount =
+    state.quiz.running && state.quiz.current && !state.quiz.awaitingNext
+      ? state.quiz.deck.length + 1
+      : state.quiz.deck.length;
+  const totalCount = items.length;
+  const progressRatio = totalCount === 0 ? 0 : (state.quiz.answered / totalCount) * 100;
+
+  statusPanel.innerHTML = `
+    <div class="status-grid">
+      <div class="stat-item">
+        <span class="stat-name">남은 문제</span>
+        <strong>${remainingCount}</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-name">정답 수</span>
+        <strong>${state.quiz.score}</strong>
+      </div>
+      <div class="stat-item">
+        <span class="stat-name">연속 정답</span>
+        <strong>${state.quiz.streak}</strong>
+      </div>
+    </div>
+    <div class="progress-area">
+      <div class="progress-meta">
+        <span>퀴즈 진행</span>
+        <span>${state.quiz.answered} / ${totalCount}</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: ${progressRatio}%"></div>
+      </div>
+    </div>
+  `;
+}
+
+function getGuideItems() {
+  if (state.category === "hiragana") {
+    return state.mode === "learn"
+      ? [
+          "기본 46자를 먼저 훑고, 필요할 때만 탁음/요음/촉음을 켜는 편이 효율적입니다.",
+          "영문 표기와 한글 표기를 같이 읽어두면 퀴즈 입력 허용 범위가 넓어집니다.",
+          "비슷한 글자 `さ/き`, `ぬ/め`, `れ/ね`를 따로 묶어서 반복해보세요."
+        ]
+      : [
+          "정답은 영문과 한글 둘 다 인정됩니다.",
+          "오답이 난 글자는 학습 모드에서 다시 보고 바로 재도전하는 흐름이 좋습니다.",
+          "확장 문자 범위를 바꾸면 퀴즈가 새로 초기화됩니다."
+        ];
+  }
+
+  if (state.category === "katakana") {
+    return state.mode === "learn"
+      ? [
+          "카타카나는 외래어, 브랜드명, 의성어에 자주 쓰입니다.",
+          "히라가나와 비슷해 보이지만 획 느낌이 다르니 모양 자체로 구분하세요.",
+          "예시 외래어를 같이 보면 장음과 탁음 기억이 훨씬 쉬워집니다."
+        ]
+      : [
+          "카타카나도 히라가나와 같은 방식으로 발음을 입력합니다.",
+          "외래어 단어를 떠올리면서 읽으면 속도가 빨라집니다.",
+          "장음이 켜져 있을 때는 `コーヒー` 같은 패턴을 같이 의식하세요."
+        ];
+  }
+
+  if (state.category === "vocab") {
+    return state.mode === "learn"
+      ? [
+          "단어는 `표기 + 읽기 + 뜻 + 예문`을 한 묶음으로 외우는 편이 오래 갑니다.",
+          "뜻만 보지 말고 예문 속 조사까지 같이 보면 문법과 연결됩니다.",
+          "히라가나 단어와 카타카나 단어를 함께 보는 것이 실제 읽기 감각에 좋습니다."
+        ]
+      : [
+          "단어 퀴즈는 일본어 단어를 보고 한국어 뜻을 맞히는 방식입니다.",
+          "뜻이 길거나 쉼표가 있는 경우 대표 의미만 맞혀도 통과하도록 일부 허용했습니다.",
+          "정답을 본 뒤에는 읽기까지 소리 내서 같이 확인하는 편이 좋습니다."
+        ];
+  }
+
+  return state.mode === "learn"
+    ? [
+        "문법은 정의만 외우지 말고 예문과 함께 묶어서 익히세요.",
+        "조사와 동사 위치를 눈으로 먼저 익히고, 의미를 한국어로 정리하면 좋습니다.",
+        "기초 문형은 단어 학습과 같이 반복할 때 훨씬 빨리 체화됩니다."
+      ]
+    : [
+        "문법 퀴즈는 자유입력보다 객관식이 더 정확하게 의미 구분을 확인합니다.",
+        "틀린 선택지는 비슷한 뜻이므로 왜 다른지 한 번 더 비교해보는 것이 중요합니다.",
+        "예문을 같이 읽어보고 다시 학습 탭으로 돌아가면 정착 속도가 빨라집니다."
+      ];
+}
+
+function renderNotePanel() {
+  const items = getGuideItems();
+
+  notePanel.innerHTML = `
+    <div class="note-stack">
+      <div class="note-block">
+        <p class="note-copy">현재 과목과 모드에 맞는 학습 팁입니다.</p>
+        <ul class="note-list">
+          ${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+function renderApp() {
+  ensureLearnIndexInRange(state.category);
+  renderStaticUi();
+  renderMainPanel();
+  renderStatusPanel();
+  renderNotePanel();
+}
+
+function handleActionClick(event) {
+  const choiceButton = event.target.closest("[data-choice]");
+
+  if (choiceButton) {
+    submitChoiceAnswer(choiceButton.dataset.choice);
+    return;
+  }
+
+  const actionButton = event.target.closest("[data-action]");
+
+  if (!actionButton) {
+    return;
+  }
+
+  const action = actionButton.dataset.action;
+
+  if (action === "prev-learn") {
+    moveLearnIndex(-1);
+    return;
+  }
+
+  if (action === "next-learn") {
+    moveLearnIndex(1);
+    return;
+  }
+
+  if (action === "random-learn") {
+    randomizeLearnIndex();
+    return;
+  }
+
+  if (action === "go-quiz") {
+    setMode("quiz");
+    return;
+  }
+
+  if (action === "start-quiz") {
+    startQuiz();
+    return;
+  }
+
+  if (action === "restart-quiz") {
+    startQuiz();
+    return;
+  }
+
+  if (action === "reveal-answer") {
+    revealAnswer();
+    return;
+  }
+
+  if (action === "next-question") {
+    loadNextQuestion();
+  }
+}
+
+function handleActionSubmit(event) {
+  if (event.target.id !== "quizAnswerForm") {
+    return;
+  }
+
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  submitTextAnswer(String(formData.get("answer") || ""));
+}
+
+Object.entries(categoryButtons).forEach(([key, button]) => {
+  button.addEventListener("click", () => setCategory(key));
 });
 
-updateStatus();
-updateControls();
+Object.entries(modeButtons).forEach(([key, button]) => {
+  button.addEventListener("click", () => setMode(key));
+});
+
+Object.keys(OPTION_CONFIG).forEach((key) => {
+  optionButtons[key].addEventListener("click", () => toggleKanaOption(key));
+});
+
+actionPanel.addEventListener("click", handleActionClick);
+actionPanel.addEventListener("submit", handleActionSubmit);
+
+resetQuiz();
+renderApp();
