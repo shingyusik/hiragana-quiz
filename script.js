@@ -173,6 +173,10 @@ const VOCAB_GROUP_CONFIG = {
     label: "신체",
     description: "몸과 얼굴, 손발을 말할 때 쓰는 기본 신체 부위 단어입니다."
   },
+  fruit: {
+    label: "과일",
+    description: "과일 이름과 과일을 고르고 먹을 때 자주 쓰는 기본 단어입니다."
+  },
   food: {
     label: "음식",
     description: "먹고 마시는 표현과 식재료 중심 단어입니다."
@@ -201,6 +205,7 @@ const VOCAB_GROUP_TAGS = {
   time: ["시간"],
   emotion: ["감정"],
   body: ["신체"],
+  fruit: ["과일"],
   food: ["음식"],
   place: ["장소"],
   daily: ["일상 표현"],
@@ -253,6 +258,18 @@ const VOCAB_KOREAN_READING = {
   じかん: "지칸",
   とき: "토키",
   りんご: "링고",
+  くだもの: "쿠다모노",
+  みかん: "미칸",
+  バナナ: "바나나",
+  いちご: "이치고",
+  ぶどう: "부도오",
+  もも: "모모",
+  なし: "나시",
+  すいか: "스이카",
+  メロン: "메론",
+  レモン: "레몬",
+  かき: "카키",
+  さくらんぼ: "사쿠란보",
   れいぞうこ: "레이조오코",
   ろうか: "로오카",
   おんがく: "옹가쿠",
@@ -768,7 +785,129 @@ const VOCAB_ITEMS = [
     example: "りんごが すきです。",
     note: "초급 단어장에서 매우 자주 나옵니다.",
     kana: ["り", "ん", "ご"],
-    group: "food"
+    group: "fruit",
+    tags: ["기본"]
+  },
+  {
+    word: "くだもの",
+    reading: "kudamono",
+    meaning: "과일",
+    example: "くだものを たべます。",
+    note: "과일 전체를 말하는 기본 명사입니다.",
+    kana: ["く", "だ", "も", "の"],
+    group: "fruit",
+    tags: ["기본", "음식"]
+  },
+  {
+    word: "みかん",
+    reading: "mikan",
+    meaning: "귤",
+    example: "みかんを ひとつ たべます。",
+    note: "겨울 과일로 자주 나오는 쉬운 단어입니다.",
+    kana: ["み", "か", "ん"],
+    group: "fruit",
+    tags: ["기본"]
+  },
+  {
+    word: "バナナ",
+    reading: "banana",
+    meaning: "바나나",
+    example: "バナナが あります。",
+    note: "카타카나 과일 단어라 모양째 익히기 좋습니다.",
+    kana: ["バ", "ナ"],
+    group: "fruit",
+    tags: ["카타카나"]
+  },
+  {
+    word: "いちご",
+    reading: "ichigo",
+    meaning: "딸기",
+    example: "いちごが あまいです。",
+    note: "맛을 나타내는 표현과 같이 외우기 좋습니다.",
+    kana: ["い", "ち", "ご"],
+    group: "fruit",
+    tags: ["맛", "기본"]
+  },
+  {
+    word: "ぶどう",
+    reading: "budou",
+    meaning: "포도",
+    example: "ぶどうを かいます。",
+    note: "장음 느낌을 함께 익힐 수 있는 과일 단어입니다.",
+    kana: ["ぶ", "ど", "う"],
+    group: "fruit",
+    tags: ["장음"]
+  },
+  {
+    word: "もも",
+    reading: "momo",
+    meaning: "복숭아",
+    example: "ももが すきです。",
+    note: "같은 글자가 반복되어 소리로 기억하기 쉽습니다.",
+    kana: ["も"],
+    group: "fruit",
+    tags: ["기본"]
+  },
+  {
+    word: "なし",
+    reading: "nashi",
+    meaning: "배",
+    example: "なしを たべます。",
+    note: "한국어의 과일 `배`에 해당하는 단어입니다.",
+    kana: ["な", "し"],
+    group: "fruit",
+    tags: ["기본"]
+  },
+  {
+    word: "すいか",
+    reading: "suika",
+    meaning: "수박",
+    example: "すいかが おいしいです。",
+    note: "여름 과일로 장면을 떠올리며 외우기 좋습니다.",
+    kana: ["す", "い", "か"],
+    group: "fruit",
+    tags: ["여름", "맛"]
+  },
+  {
+    word: "メロン",
+    reading: "meron",
+    meaning: "멜론",
+    example: "メロンを たべます。",
+    note: "카타카나 외래어 과일 단어입니다.",
+    kana: ["メ", "ロ", "ン"],
+    group: "fruit",
+    tags: ["카타카나"]
+  },
+  {
+    word: "レモン",
+    reading: "remon",
+    meaning: "레몬",
+    example: "レモンは すっぱいです。",
+    note: "신맛 표현과 함께 익히기 좋은 카타카나 단어입니다.",
+    kana: ["レ", "モ", "ン"],
+    group: "fruit",
+    tags: ["카타카나", "맛"]
+  },
+  {
+    word: "かき",
+    reading: "kaki",
+    meaning: "감",
+    example: "かきを かいます。",
+    note: "동음이의어가 있으니 과일 묶음에서는 `감`으로 기억하세요.",
+    kana: ["か", "き"],
+    group: "fruit",
+    tags: ["가을"]
+  },
+  {
+    word: "さくらんぼ",
+    reading: "sakuranbo",
+    meaning: "체리",
+    accepted: ["체리", "버찌"],
+    example: "さくらんぼが かわいいです。",
+    note: "조금 길지만 소리 덩어리로 나누면 외우기 쉽습니다.",
+    kana: ["さ", "く", "ら", "ん", "ぼ"],
+    group: "fruit",
+    tags: ["기본"]
   },
   {
     word: "れいぞうこ",
@@ -2665,6 +2804,20 @@ function getGuideItems() {
             "신체 퀴즈는 뜻을 맞힌 뒤 예문에서 어떤 동사와 연결되는지 같이 확인하세요.",
             "`あし`처럼 발과 다리 둘 다 가능한 단어는 대표 의미를 넓게 받아들입니다.",
             "오답이 난 단어는 바로 `...が いたいです` 문장으로 한 번 말해보면 복습 효과가 좋습니다."
+          ];
+    }
+
+    if (state.vocabGroup === "fruit") {
+      return state.mode === "learn"
+        ? [
+            "과일 단어는 `くだもの`를 먼저 잡고, `りんご / みかん / いちご`처럼 자주 먹는 과일부터 외우세요.",
+            "`バナナ / メロン / レモン`처럼 카타카나 과일은 글자 모양과 소리를 같이 확인하면 기억이 빠릅니다.",
+            "맛 표현과 연결해서 `あまい`, `すっぱい`, `おいしい`를 붙여 짧은 문장으로 말해보세요."
+          ]
+        : [
+            "과일 퀴즈는 히라가나 과일과 카타카나 과일을 섞어서 뜻을 바로 떠올리는 연습입니다.",
+            "`なし`처럼 한국어와 일본어가 다르게 느껴지는 단어는 예문까지 같이 읽어두세요.",
+            "정답 확인 뒤 좋아하는 과일은 `...が すきです` 문장으로 한 번 더 말해보면 좋습니다."
           ];
     }
 
