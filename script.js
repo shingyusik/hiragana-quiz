@@ -180,6 +180,10 @@ const VOCAB_GROUP_CONFIG = {
   nature: {
     label: "자연",
     description: "자연물과 생물을 묶어서 익히는 단어입니다."
+  },
+  conjunction: {
+    label: "접속사",
+    description: "문장과 문장을 자연스럽게 이어주는 기본 연결 표현입니다."
   }
 };
 
@@ -231,7 +235,31 @@ const VOCAB_KOREAN_READING = {
   かなしい: "카나시이",
   たのしい: "타노시이",
   こわい: "코와이",
-  げんき: "겐키"
+  げんき: "겐키",
+  そして: "소시테",
+  でも: "데모",
+  しかし: "시카시",
+  だから: "다카라",
+  それから: "소레카라",
+  また: "마타",
+  それとも: "소레토모",
+  つまり: "츠마리",
+  さらに: "사라니",
+  しかも: "시카모",
+  ところが: "토코로가",
+  それなのに: "소레나노니",
+  とはいえ: "토와이에",
+  なぜなら: "나제나라",
+  というのは: "토이우노와",
+  だって: "닷테",
+  そのため: "소노타메",
+  すなわち: "스나와치",
+  要するに: "요오스루니",
+  例えば: "타토에바",
+  いわば: "이와바",
+  したがって: "시타갓테",
+  それで: "소레데",
+  ゆえに: "유에니"
 };
 
 const VOCAB_ITEMS = [
@@ -671,6 +699,244 @@ const VOCAB_ITEMS = [
     note: "인사 표현과 같이 묶으면 실전 활용도가 높습니다.",
     kana: ["げ", "ん", "き"],
     group: "emotion"
+  },
+  {
+    word: "そして",
+    reading: "soshite",
+    meaning: "그리고",
+    example: "あさです。そして はれです。",
+    note: "앞 문장에 내용을 자연스럽게 이어 붙일 때 쓰는 기본 접속사입니다.",
+    kana: ["そ", "し", "て"],
+    group: "conjunction"
+  },
+  {
+    word: "でも",
+    reading: "demo",
+    meaning: "하지만, 그런데",
+    accepted: ["하지만", "그런데", "그래도"],
+    example: "あめです。でも いきます。",
+    note: "앞 내용과 반대되는 흐름을 만들 때 자주 씁니다.",
+    kana: ["で", "も"],
+    group: "conjunction"
+  },
+  {
+    word: "しかし",
+    reading: "shikashi",
+    meaning: "그러나",
+    accepted: ["그러나", "하지만"],
+    example: "たのしいです。しかし むずかしいです。",
+    note: "`でも`보다 조금 더 딱딱하고 글말 느낌이 있는 역접 표현입니다.",
+    kana: ["し", "か", "し"],
+    group: "conjunction"
+  },
+  {
+    word: "だから",
+    reading: "dakara",
+    meaning: "그래서, 그러니까",
+    accepted: ["그래서", "그러니까", "그러므로"],
+    example: "きょうは あめです。だから かさを もっています。",
+    note: "이유를 말한 뒤 결과를 이어줄 때 쓰는 초급 핵심 표현입니다.",
+    kana: ["だ", "か", "ら"],
+    group: "conjunction"
+  },
+  {
+    word: "それから",
+    reading: "sorekara",
+    meaning: "그리고 나서, 그 다음에",
+    accepted: ["그리고 나서", "그 다음에", "그다음에", "그리고"],
+    example: "ほんを よみます。それから てがみを かきます。",
+    note: "시간 순서대로 다음 행동을 이어 말할 때 쓰기 좋습니다.",
+    kana: ["そ", "れ", "か", "ら"],
+    group: "conjunction"
+  },
+  {
+    word: "また",
+    reading: "mata",
+    meaning: "또, 또한",
+    accepted: ["또", "또한", "다시"],
+    example: "あした また べんきょうします。",
+    note: "추가 정보나 반복되는 행동을 붙일 때 자주 쓰입니다.",
+    kana: ["ま", "た"],
+    group: "conjunction"
+  },
+  {
+    word: "それとも",
+    reading: "soretomo",
+    meaning: "아니면, 혹은",
+    accepted: ["아니면", "혹은", "또는"],
+    example: "コーヒーですか。それとも おちゃですか。",
+    note: "두 선택지를 놓고 묻는 질문에서 자주 나오는 연결 표현입니다.",
+    kana: ["そ", "れ", "と", "も"],
+    group: "conjunction"
+  },
+  {
+    word: "つまり",
+    reading: "tsumari",
+    meaning: "즉, 다시 말해",
+    accepted: ["즉", "다시 말해", "다시말해", "그러니까"],
+    example: "ここは えきです。つまり べんりです。",
+    note: "앞 내용을 짧게 정리하거나 바꿔 말할 때 씁니다.",
+    kana: ["つ", "ま", "り"],
+    group: "conjunction"
+  },
+  {
+    word: "さらに",
+    reading: "sarani",
+    meaning: "게다가, 더욱더",
+    accepted: ["게다가", "더욱더", "더구나", "또한"],
+    example: "彼女は歌が上手だ。さらにダンスもできる。",
+    note: "순접 표현입니다. 앞 내용에 더 강한 추가 정보를 붙일 때 씁니다.",
+    kana: ["さ", "ら", "に"],
+    group: "conjunction"
+  },
+  {
+    word: "しかも",
+    reading: "shikamo",
+    meaning: "게다가, 더군다나",
+    accepted: ["게다가", "더군다나", "더구나"],
+    example: "このレストランは美味しい。しかも安い。",
+    note: "순접 표현입니다. 좋은 점이나 특징을 덧붙여 강조할 때 자주 씁니다.",
+    kana: ["し", "か", "も"],
+    group: "conjunction"
+  },
+  {
+    word: "ところが",
+    reading: "tokoroga",
+    meaning: "그런데, 예상과 다름",
+    accepted: ["그런데", "예상과 다름", "하지만"],
+    example: "彼に電話した。ところが、出なかった。",
+    note: "역접 표현입니다. 예상과 다른 결과가 나왔을 때 씁니다.",
+    kana: ["と", "こ", "ろ", "が"],
+    group: "conjunction"
+  },
+  {
+    word: "それなのに",
+    reading: "sorenanoni",
+    meaning: "그런데도",
+    accepted: ["그런데도", "그럼에도", "그럼에도 불구하고"],
+    example: "たくさん寝た。それなのに、まだ眠い。",
+    note: "역접 표현입니다. 앞 내용과 반대되는 상태가 이어질 때 씁니다.",
+    kana: ["そ", "れ", "な", "の", "に"],
+    group: "conjunction"
+  },
+  {
+    word: "とはいえ",
+    reading: "towaie",
+    meaning: "그렇다고 해도",
+    accepted: ["그렇다고 해도", "그렇다고는 해도", "하지만"],
+    example: "彼は賢い。とはいえ、完璧ではない。",
+    note: "역접 표현입니다. 앞 내용을 인정하면서 제한이나 반대 내용을 덧붙입니다.",
+    kana: ["と", "は", "い", "え"],
+    group: "conjunction"
+  },
+  {
+    word: "なぜなら",
+    reading: "nazenara",
+    meaning: "왜냐하면",
+    example: "遅れました。なぜなら、電車が止まったからです。",
+    note: "이유와 원인을 설명할 때 쓰는 기본 표현입니다.",
+    kana: ["な", "ぜ", "な", "ら"],
+    group: "conjunction"
+  },
+  {
+    word: "というのは",
+    reading: "toiunoha",
+    meaning: "왜냐하면",
+    accepted: ["왜냐하면", "그 이유는"],
+    example: "彼は行きません。というのは、風邪をひいたからです。",
+    note: "앞 문장의 이유를 뒤에서 차분히 설명할 때 씁니다.",
+    kana: ["と", "い", "う", "の", "は"],
+    group: "conjunction"
+  },
+  {
+    word: "だって",
+    reading: "datte",
+    meaning: "왜냐하면",
+    accepted: ["왜냐하면", "왜냐면"],
+    example: "だって、お腹がすいたんだもん。",
+    note: "이유를 말할 때 쓰는 구어체 표현입니다. 친한 사이의 말투에 가깝습니다.",
+    kana: ["だ", "っ", "て"],
+    group: "conjunction"
+  },
+  {
+    word: "そのため",
+    reading: "sonotame",
+    meaning: "그래서, 그 때문에",
+    accepted: ["그래서", "그 때문에", "그때문에", "그러므로"],
+    example: "大雨だった。そのため、試合は中止になった。",
+    note: "이유와 원인을 공식적으로 설명할 때 잘 어울리는 표현입니다.",
+    kana: ["そ", "の", "た", "め"],
+    group: "conjunction"
+  },
+  {
+    word: "すなわち",
+    reading: "sunawachi",
+    meaning: "즉",
+    accepted: ["즉", "다시 말해", "다시말해"],
+    example: "この試験は難しい。すなわち、合格率が低い。",
+    note: "앞 내용을 딱딱하게 정리하거나 다시 설명할 때 씁니다.",
+    kana: ["す", "な", "わ", "ち"],
+    group: "conjunction"
+  },
+  {
+    word: "要するに",
+    reading: "yousuruni",
+    meaning: "요컨대",
+    accepted: ["요컨대", "간단히 말해", "간단히말해", "결국"],
+    example: "要するに、彼は怠け者だ。",
+    note: "여러 내용을 짧게 요약해서 결론을 말할 때 씁니다.",
+    kana: ["よう", "す", "る", "に"],
+    group: "conjunction"
+  },
+  {
+    word: "例えば",
+    reading: "tatoeba",
+    meaning: "예를 들면",
+    accepted: ["예를 들면", "예를들면", "예컨대"],
+    example: "私は果物が好きです。例えば、りんごやバナナです。",
+    note: "예시를 들어 설명을 쉽게 만들 때 쓰는 표현입니다.",
+    kana: ["た", "と", "え", "ば"],
+    group: "conjunction"
+  },
+  {
+    word: "いわば",
+    reading: "iwaba",
+    meaning: "말하자면",
+    accepted: ["말하자면", "이를테면"],
+    example: "彼は、いわば生き字引だ。",
+    note: "비유하거나 쉬운 말로 바꿔 설명할 때 쓰는 표현입니다.",
+    kana: ["い", "わ", "ば"],
+    group: "conjunction"
+  },
+  {
+    word: "したがって",
+    reading: "shitagatte",
+    meaning: "따라서",
+    accepted: ["따라서", "그러므로", "그 결과"],
+    example: "この店は人気だ。したがって、予約が必要だ。",
+    note: "결론이나 결과를 격식 있게 이어줄 때 씁니다.",
+    kana: ["し", "た", "が", "っ", "て"],
+    group: "conjunction"
+  },
+  {
+    word: "それで",
+    reading: "sorede",
+    meaning: "그래서",
+    accepted: ["그래서", "그리하여"],
+    example: "頭が痛い。それで、薬を飲んだ。",
+    note: "앞 상황 때문에 뒤 행동이나 결과가 이어질 때 쓰는 말입니다.",
+    kana: ["そ", "れ", "で"],
+    group: "conjunction"
+  },
+  {
+    word: "ゆえに",
+    reading: "yueni",
+    meaning: "그러므로",
+    accepted: ["그러므로", "따라서", "그 때문에"],
+    example: "彼は努力した。ゆえに、成功した。",
+    note: "결론이나 결과를 격식 있게 말할 때 쓰는 표현입니다.",
+    kana: ["ゆ", "え", "に"],
+    group: "conjunction"
   }
 ];
 
@@ -1828,6 +2094,20 @@ function getGuideItems() {
             "감정 단어는 의미만 맞히지 말고 어떤 상황에서 쓰는지도 같이 떠올려야 합니다.",
             "쉼표가 있는 뜻은 대표 의미만 맞혀도 되지만, 뉘앙스 차이는 학습 모드에서 다시 확인하세요.",
             "맞힌 뒤 `きょうは ... です`로 짧은 문장을 만들어보면 실전 전환이 빨라집니다."
+          ];
+    }
+
+    if (state.vocabGroup === "conjunction") {
+      return state.mode === "learn"
+        ? [
+            "접속사는 뜻만 외우기보다 앞뒤 문장의 관계를 같이 잡아야 오래 갑니다.",
+            "`でも / しかし`는 반대 흐름, `だから`는 이유와 결과, `それから`는 순서 연결로 묶어보세요.",
+            "짧은 문장 두 개를 직접 이어 말해보면 실제 회화에서 바로 꺼내기 쉽습니다."
+          ]
+        : [
+            "접속사 퀴즈는 한국어 뜻을 맞힌 뒤 예문 속 앞뒤 관계까지 확인하세요.",
+            "비슷한 뜻이 있어도 문장 분위기가 다를 수 있으니 `でも`와 `しかし`를 비교해보면 좋습니다.",
+            "정답 확인 후 같은 접속사로 새 문장을 하나 만들어보면 기억이 빠르게 고정됩니다."
           ];
     }
 
