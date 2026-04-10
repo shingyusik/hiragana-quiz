@@ -263,11 +263,21 @@ const VOCAB_KOREAN_READING = {
   はれ: "하레",
   くもり: "쿠모리",
   かぜ: "카제",
-  ひとつ: "히토츠",
-  ふたつ: "후타츠",
-  みっつ: "밋츠",
-  よっつ: "욧츠",
-  いつつ: "이츠츠",
+  ゼロ: "제로",
+  れい: "레이",
+  いち: "이치",
+  に: "니",
+  さん: "산",
+  よん: "욘",
+  し: "시",
+  ご: "고",
+  ろく: "로쿠",
+  なな: "나나",
+  しち: "시치",
+  はち: "하치",
+  きゅう: "큐우",
+  く: "쿠",
+  じゅう: "쥬우",
   うれしい: "우레시이",
   かなしい: "카나시이",
   たのしい: "타노시이",
@@ -856,49 +866,129 @@ const VOCAB_ITEMS = [
     group: "weather"
   },
   {
-    word: "ひとつ",
-    reading: "hitotsu",
-    meaning: "하나",
-    example: "りんごが ひとつ あります。",
-    note: "숫자 표현은 기본형부터 소리로 익히는 편이 좋습니다.",
-    kana: ["ひ", "と", "つ"],
-    group: "number"
+    word: "ゼロ / れい",
+    reading: "zero / rei",
+    koreanReading: "제로 / 레이",
+    meaning: "영, 0",
+    accepted: ["영", "0", "제로", "레이"],
+    example: "りんごは ゼロです。",
+    note: "0은 `ゼロ`를 가장 흔하게 쓰고, 격식 있는 표현에서는 `れい`도 씁니다.",
+    kana: ["ゼ", "ロ", "れ", "い"],
+    group: "number",
+    tags: ["기본 숫자", "0"]
   },
   {
-    word: "ふたつ",
-    reading: "futatsu",
-    meaning: "둘",
-    example: "パンが ふたつ あります。",
-    note: "짧은 단어라서 발음과 의미를 바로 연결하기 좋습니다.",
-    kana: ["ふ", "た", "つ"],
-    group: "number"
+    word: "いち",
+    reading: "ichi",
+    meaning: "하나, 1",
+    accepted: ["하나", "1", "일"],
+    example: "いちは いちばん はじめの かずです。",
+    note: "기본 숫자 1입니다. 뒤에 붙는 말에 따라 소리가 바뀌는 경우가 있습니다.",
+    kana: ["い", "ち"],
+    group: "number",
+    tags: ["기본 숫자", "1"]
   },
   {
-    word: "みっつ",
-    reading: "mittsu",
-    meaning: "셋",
-    example: "コップが みっつ あります。",
-    note: "카운터 표현과 연결하기 좋은 숫자입니다.",
-    kana: ["み", "っ", "つ"],
-    group: "number"
+    word: "に",
+    reading: "ni",
+    meaning: "둘, 2",
+    accepted: ["둘", "2", "이"],
+    example: "にと さんを いっしょに よみます。",
+    note: "기본 숫자 2입니다. 짧아서 소리와 뜻을 바로 연결하기 좋습니다.",
+    kana: ["に"],
+    group: "number",
+    tags: ["기본 숫자", "2"]
   },
   {
-    word: "よっつ",
-    reading: "yottsu",
-    meaning: "넷",
-    example: "へやに いすが よっつ あります。",
-    note: "`し`보다 `よん`이 초급에서는 더 자주 쓰입니다.",
-    kana: ["よ", "っ", "つ"],
-    group: "number"
+    word: "さん",
+    reading: "san",
+    meaning: "셋, 3",
+    accepted: ["셋", "3", "삼"],
+    example: "さんまで かぞえます。",
+    note: "기본 숫자 3입니다. 사람 호칭 `さん`과 표기는 같지만 숫자로도 자주 씁니다.",
+    kana: ["さ", "ん"],
+    group: "number",
+    tags: ["기본 숫자", "3"]
   },
   {
-    word: "いつつ",
-    reading: "itsutsu",
-    meaning: "다섯",
-    example: "りんごが いつつ あります。",
-    note: "개수 표현과 함께 반복하면 감각이 빠르게 잡힙니다.",
-    kana: ["い", "つ", "つ"],
-    group: "number"
+    word: "よん / し",
+    reading: "yon / shi",
+    koreanReading: "욘 / 시",
+    meaning: "넷, 4",
+    accepted: ["넷", "4", "사"],
+    example: "よんまで かぞえます。",
+    note: "4는 `し`도 있지만 초급 회화에서는 `よん`을 먼저 익히는 편이 좋습니다.",
+    kana: ["よ", "ん", "し"],
+    group: "number",
+    tags: ["기본 숫자", "4"]
+  },
+  {
+    word: "ご",
+    reading: "go",
+    meaning: "다섯, 5",
+    accepted: ["다섯", "5", "오"],
+    example: "ごまで かぞえます。",
+    note: "기본 숫자 5입니다. 탁음 `ご` 발음을 같이 익힐 수 있습니다.",
+    kana: ["ご"],
+    group: "number",
+    tags: ["기본 숫자", "5"]
+  },
+  {
+    word: "ろく",
+    reading: "roku",
+    meaning: "여섯, 6",
+    accepted: ["여섯", "6", "육"],
+    example: "ろくまで かぞえます。",
+    note: "기본 숫자 6입니다. 뒤에 붙는 단위에 따라 `ろっ`처럼 바뀌기도 합니다.",
+    kana: ["ろ", "く"],
+    group: "number",
+    tags: ["기본 숫자", "6"]
+  },
+  {
+    word: "なな / しち",
+    reading: "nana / shichi",
+    koreanReading: "나나 / 시치",
+    meaning: "일곱, 7",
+    accepted: ["일곱", "7", "칠"],
+    example: "ななまで かぞえます。",
+    note: "7은 `しち`도 있지만 초급에서는 `なな`를 먼저 익히면 헷갈림이 적습니다.",
+    kana: ["な", "な", "し", "ち"],
+    group: "number",
+    tags: ["기본 숫자", "7"]
+  },
+  {
+    word: "はち",
+    reading: "hachi",
+    meaning: "여덟, 8",
+    accepted: ["여덟", "8", "팔"],
+    example: "はちまで かぞえます。",
+    note: "기본 숫자 8입니다. `ち` 소리까지 함께 복습할 수 있습니다.",
+    kana: ["は", "ち"],
+    group: "number",
+    tags: ["기본 숫자", "8"]
+  },
+  {
+    word: "きゅう / く",
+    reading: "kyuu / ku",
+    koreanReading: "큐우 / 쿠",
+    meaning: "아홉, 9",
+    accepted: ["아홉", "9", "구"],
+    example: "きゅうまで かぞえます。",
+    note: "9는 `く`도 있지만 기본 숫자로는 `きゅう`를 먼저 고정하세요.",
+    kana: ["きゅ", "う", "く"],
+    group: "number",
+    tags: ["기본 숫자", "9"]
+  },
+  {
+    word: "じゅう",
+    reading: "juu",
+    meaning: "열, 10",
+    accepted: ["열", "10", "십"],
+    example: "じゅうまで かぞえます。",
+    note: "기본 숫자 10입니다. 11부터는 `じゅう` 뒤에 숫자를 붙여 확장합니다.",
+    kana: ["じゅ", "う"],
+    group: "number",
+    tags: ["기본 숫자", "10"]
   },
   {
     word: "うれしい",
@@ -1713,7 +1803,7 @@ function getAcceptedVocabAnswers(item) {
 }
 
 function getVocabKoreanReading(item) {
-  return VOCAB_KOREAN_READING[item.word] || "";
+  return item.koreanReading || VOCAB_KOREAN_READING[item.word] || "";
 }
 
 function getVocabTags(item) {
