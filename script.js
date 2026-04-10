@@ -165,6 +165,10 @@ const VOCAB_GROUP_CONFIG = {
     label: "감정",
     description: "기분과 상태를 말할 때 자주 쓰는 형용사 묶음입니다."
   },
+  body: {
+    label: "신체",
+    description: "몸과 얼굴, 손발을 말할 때 쓰는 기본 신체 부위 단어입니다."
+  },
   food: {
     label: "음식",
     description: "먹고 마시는 표현과 식재료 중심 단어입니다."
@@ -191,6 +195,7 @@ const VOCAB_GROUP_TAGS = {
   weather: ["날씨"],
   number: ["숫자"],
   emotion: ["감정"],
+  body: ["신체"],
   food: ["음식"],
   place: ["장소"],
   daily: ["일상 표현"],
@@ -270,7 +275,24 @@ const VOCAB_KOREAN_READING = {
   いわば: "이와바",
   したがって: "시타갓테",
   それで: "소레데",
-  ゆえに: "유에니"
+  ゆえに: "유에니",
+  からだ: "카라다",
+  あたま: "아타마",
+  かお: "카오",
+  め: "메",
+  みみ: "미미",
+  くち: "쿠치",
+  て: "테",
+  あし: "아시",
+  おなか: "오나카",
+  くび: "쿠비",
+  うで: "우데",
+  かた: "카타",
+  ひざ: "히자",
+  ゆび: "유비",
+  せなか: "세나카",
+  むね: "무네",
+  は: "하"
 };
 
 const VOCAB_ITEMS = [
@@ -735,6 +757,181 @@ const VOCAB_ITEMS = [
     kana: ["げ", "ん", "き"],
     group: "emotion",
     tags: ["상태", "인사", "일상 표현"]
+  },
+  {
+    word: "からだ",
+    reading: "karada",
+    meaning: "몸, 신체",
+    accepted: ["몸", "신체"],
+    example: "からだを うごかします。",
+    note: "운동이나 건강 이야기에서 가장 먼저 쓰는 기본 단어입니다.",
+    kana: ["か", "ら", "だ"],
+    group: "body",
+    tags: ["건강", "기본"]
+  },
+  {
+    word: "あたま",
+    reading: "atama",
+    meaning: "머리",
+    example: "あたまが いたいです。",
+    note: "아픈 곳을 말할 때 바로 쓸 수 있는 신체 단어입니다.",
+    kana: ["あ", "た", "ま"],
+    group: "body",
+    tags: ["얼굴", "통증"]
+  },
+  {
+    word: "かお",
+    reading: "kao",
+    meaning: "얼굴",
+    example: "かおを あらいます。",
+    note: "일상 행동 표현과 같이 외우기 좋습니다.",
+    kana: ["か", "お"],
+    group: "body",
+    tags: ["얼굴", "생활"]
+  },
+  {
+    word: "め",
+    reading: "me",
+    meaning: "눈",
+    example: "めを とじます。",
+    note: "짧은 단어라서 글자와 뜻을 바로 연결하는 연습에 좋습니다.",
+    kana: ["め"],
+    group: "body",
+    tags: ["얼굴", "감각"]
+  },
+  {
+    word: "みみ",
+    reading: "mimi",
+    meaning: "귀",
+    example: "みみで ききます。",
+    note: "같은 글자가 반복되는 쉬운 신체 단어입니다.",
+    kana: ["み"],
+    group: "body",
+    tags: ["얼굴", "감각"]
+  },
+  {
+    word: "くち",
+    reading: "kuchi",
+    meaning: "입",
+    example: "くちを あけます。",
+    note: "`ち` 발음과 함께 익히기 좋은 기본 단어입니다.",
+    kana: ["く", "ち"],
+    group: "body",
+    tags: ["얼굴"]
+  },
+  {
+    word: "て",
+    reading: "te",
+    meaning: "손",
+    example: "てを あらいます。",
+    note: "생활 동작과 가장 자주 결합하는 신체 단어입니다.",
+    kana: ["て"],
+    group: "body",
+    tags: ["손발", "생활"]
+  },
+  {
+    word: "あし",
+    reading: "ashi",
+    meaning: "발, 다리",
+    accepted: ["발", "다리"],
+    example: "あしが いたいです。",
+    note: "문맥에 따라 발이나 다리를 가리킬 수 있습니다.",
+    kana: ["あ", "し"],
+    group: "body",
+    tags: ["손발", "통증"]
+  },
+  {
+    word: "おなか",
+    reading: "onaka",
+    meaning: "배, 복부",
+    accepted: ["배", "복부"],
+    example: "おなかが すきました。",
+    note: "배고픔을 말하는 표현과 같이 자주 나옵니다.",
+    kana: ["お", "な", "か"],
+    group: "body",
+    tags: ["몸통", "회화"]
+  },
+  {
+    word: "くび",
+    reading: "kubi",
+    meaning: "목",
+    example: "くびが いたいです。",
+    note: "몸 상태를 설명할 때 유용한 단어입니다.",
+    kana: ["く", "び"],
+    group: "body",
+    tags: ["몸통", "통증"]
+  },
+  {
+    word: "うで",
+    reading: "ude",
+    meaning: "팔",
+    example: "うでを あげます。",
+    note: "동작 표현과 함께 익히기 좋은 신체 단어입니다.",
+    kana: ["う", "で"],
+    group: "body",
+    tags: ["손발", "동작"]
+  },
+  {
+    word: "かた",
+    reading: "kata",
+    meaning: "어깨",
+    example: "かたが いたいです。",
+    note: "통증 표현과 자연스럽게 연결됩니다.",
+    kana: ["か", "た"],
+    group: "body",
+    tags: ["몸통", "통증"]
+  },
+  {
+    word: "ひざ",
+    reading: "hiza",
+    meaning: "무릎",
+    example: "ひざを まげます。",
+    note: "운동이나 자세를 설명할 때 쓰기 좋은 단어입니다.",
+    kana: ["ひ", "ざ"],
+    group: "body",
+    tags: ["손발", "동작"]
+  },
+  {
+    word: "ゆび",
+    reading: "yubi",
+    meaning: "손가락, 발가락",
+    accepted: ["손가락", "발가락"],
+    example: "ゆびを さします。",
+    note: "손가락과 발가락을 모두 가리킬 수 있습니다.",
+    kana: ["ゆ", "び"],
+    group: "body",
+    tags: ["손발"]
+  },
+  {
+    word: "せなか",
+    reading: "senaka",
+    meaning: "등",
+    example: "せなかが いたいです。",
+    note: "아픈 부위를 설명하는 문장으로 바로 확장하기 좋습니다.",
+    kana: ["せ", "な", "か"],
+    group: "body",
+    tags: ["몸통", "통증"]
+  },
+  {
+    word: "むね",
+    reading: "mune",
+    meaning: "가슴",
+    example: "むねが いたいです。",
+    note: "몸통 부위를 말할 때 필요한 기본 단어입니다.",
+    kana: ["む", "ね"],
+    group: "body",
+    tags: ["몸통"]
+  },
+  {
+    word: "は",
+    reading: "ha",
+    meaning: "이, 치아",
+    accepted: ["이", "치아"],
+    example: "はを みがきます。",
+    note: "조사 `は`와 글자는 같지만 단어로는 `치아`를 뜻합니다.",
+    kana: ["は"],
+    group: "body",
+    tags: ["얼굴", "생활"]
   },
   {
     word: "そして",
@@ -2160,6 +2357,20 @@ function getGuideItems() {
             "감정 단어는 의미만 맞히지 말고 어떤 상황에서 쓰는지도 같이 떠올려야 합니다.",
             "쉼표가 있는 뜻은 대표 의미만 맞혀도 되지만, 뉘앙스 차이는 학습 모드에서 다시 확인하세요.",
             "맞힌 뒤 `きょうは ... です`로 짧은 문장을 만들어보면 실전 전환이 빨라집니다."
+          ];
+    }
+
+    if (state.vocabGroup === "body") {
+      return state.mode === "learn"
+        ? [
+            "신체 단어는 `...が いたいです` 패턴과 묶으면 바로 상태 표현으로 확장됩니다.",
+            "`め / て / は`처럼 짧은 단어는 글자 하나와 뜻을 빠르게 연결하는 연습에 좋습니다.",
+            "얼굴, 몸통, 손발 태그를 기준으로 나눠 보면 비슷한 부위끼리 기억하기 쉽습니다."
+          ]
+        : [
+            "신체 퀴즈는 뜻을 맞힌 뒤 예문에서 어떤 동사와 연결되는지 같이 확인하세요.",
+            "`あし`처럼 발과 다리 둘 다 가능한 단어는 대표 의미를 넓게 받아들입니다.",
+            "오답이 난 단어는 바로 `...が いたいです` 문장으로 한 번 말해보면 복습 효과가 좋습니다."
           ];
     }
 
