@@ -148,6 +148,92 @@ const CHOON_SET = [
   { kana: "こう", roman: ["kou"], korean: ["코우"] }
 ];
 
+const VOCAB_GROUP_CONFIG = {
+  all: {
+    label: "전체",
+    description: "모든 단어를 한 번에 섞어서 학습합니다."
+  },
+  weather: {
+    label: "날씨",
+    description: "날씨와 자연 상태를 설명하는 표현입니다."
+  },
+  number: {
+    label: "숫자",
+    description: "가장 기본적인 수 표현을 빠르게 익힙니다."
+  },
+  emotion: {
+    label: "감정",
+    description: "기분과 상태를 말할 때 자주 쓰는 형용사 묶음입니다."
+  },
+  food: {
+    label: "음식",
+    description: "먹고 마시는 표현과 식재료 중심 단어입니다."
+  },
+  place: {
+    label: "장소",
+    description: "위치, 이동, 공간과 연결되는 단어 묶음입니다."
+  },
+  daily: {
+    label: "생활",
+    description: "일상 회화에서 자주 부딪히는 기본 명사들입니다."
+  },
+  nature: {
+    label: "자연",
+    description: "자연물과 생물을 묶어서 익히는 단어입니다."
+  }
+};
+
+const VOCAB_KOREAN_READING = {
+  あさ: "아사",
+  いえ: "이에",
+  うみ: "우미",
+  えき: "에키",
+  おちゃ: "오차",
+  かさ: "카사",
+  きょう: "쿄오",
+  くつ: "쿠츠",
+  さかな: "사카나",
+  しお: "시오",
+  すし: "스시",
+  せんせい: "센세이",
+  たまご: "타마고",
+  ちず: "치즈",
+  つき: "츠키",
+  てがみ: "테가미",
+  とけい: "토케이",
+  ねこ: "네코",
+  はな: "하나",
+  ひと: "히토",
+  ふね: "후네",
+  へや: "헤야",
+  ほん: "혼",
+  みず: "미즈",
+  やさい: "야사이",
+  ゆき: "유키",
+  よる: "요루",
+  りんご: "링고",
+  れいぞうこ: "레이조오코",
+  ろうか: "로오카",
+  おんがく: "옹가쿠",
+  コーヒー: "코오히이",
+  ケーキ: "케에키",
+  ホテル: "호테루",
+  あめ: "아메",
+  はれ: "하레",
+  くもり: "쿠모리",
+  かぜ: "카제",
+  ひとつ: "히토츠",
+  ふたつ: "후타츠",
+  みっつ: "밋츠",
+  よっつ: "욧츠",
+  いつつ: "이츠츠",
+  うれしい: "우레시이",
+  かなしい: "카나시이",
+  たのしい: "타노시이",
+  こわい: "코와이",
+  げんき: "겐키"
+};
+
 const VOCAB_ITEMS = [
   {
     word: "あさ",
@@ -155,7 +241,8 @@ const VOCAB_ITEMS = [
     meaning: "아침",
     example: "あさです。",
     note: "시간 표현의 기본 단어입니다.",
-    kana: ["あ", "さ"]
+    kana: ["あ", "さ"],
+    group: "daily"
   },
   {
     word: "いえ",
@@ -163,7 +250,8 @@ const VOCAB_ITEMS = [
     meaning: "집",
     example: "いえに かえります。",
     note: "장소 표현에서 자주 나옵니다.",
-    kana: ["い", "え"]
+    kana: ["い", "え"],
+    group: "place"
   },
   {
     word: "うみ",
@@ -171,7 +259,8 @@ const VOCAB_ITEMS = [
     meaning: "바다",
     example: "うみが きれいです。",
     note: "형용사 예문과 같이 외우기 좋습니다.",
-    kana: ["う", "み"]
+    kana: ["う", "み"],
+    group: "nature"
   },
   {
     word: "えき",
@@ -179,7 +268,8 @@ const VOCAB_ITEMS = [
     meaning: "역",
     example: "えきは どこですか。",
     note: "문법 패턴 `A は どこ ですか`와 잘 붙습니다.",
-    kana: ["え", "き"]
+    kana: ["え", "き"],
+    group: "place"
   },
   {
     word: "おちゃ",
@@ -188,7 +278,8 @@ const VOCAB_ITEMS = [
     accepted: ["차", "녹차"],
     example: "おちゃを のみます。",
     note: "조사 `を`와 같이 복습하기 좋습니다.",
-    kana: ["お", "ちゃ"]
+    kana: ["お", "ちゃ"],
+    group: "food"
   },
   {
     word: "かさ",
@@ -196,7 +287,8 @@ const VOCAB_ITEMS = [
     meaning: "우산",
     example: "かさを もっています。",
     note: "가장 기본적인 생활 단어 중 하나입니다.",
-    kana: ["か", "さ"]
+    kana: ["か", "さ"],
+    group: "daily"
   },
   {
     word: "きょう",
@@ -204,7 +296,8 @@ const VOCAB_ITEMS = [
     meaning: "오늘",
     example: "きょうは いそがしいです。",
     note: "요음과 장음 느낌을 같이 익힐 수 있습니다.",
-    kana: ["きょ", "う"]
+    kana: ["きょ", "う"],
+    group: "daily"
   },
   {
     word: "くつ",
@@ -212,7 +305,8 @@ const VOCAB_ITEMS = [
     meaning: "신발",
     example: "くつを ぬぎます。",
     note: "`つ` 발음 연습에 좋습니다.",
-    kana: ["く", "つ"]
+    kana: ["く", "つ"],
+    group: "daily"
   },
   {
     word: "さかな",
@@ -220,7 +314,8 @@ const VOCAB_ITEMS = [
     meaning: "생선",
     example: "さかなを たべます。",
     note: "명사와 동사 연결 연습용으로 좋습니다.",
-    kana: ["さ", "か", "な"]
+    kana: ["さ", "か", "な"],
+    group: "food"
   },
   {
     word: "しお",
@@ -228,7 +323,8 @@ const VOCAB_ITEMS = [
     meaning: "소금",
     example: "しおを すこし いれます。",
     note: "`し` 표기를 같이 익히기 좋습니다.",
-    kana: ["し", "お"]
+    kana: ["し", "お"],
+    group: "food"
   },
   {
     word: "すし",
@@ -236,7 +332,8 @@ const VOCAB_ITEMS = [
     meaning: "초밥",
     example: "すしが すきです。",
     note: "초급 회화에서 자주 쓰는 대표 단어입니다.",
-    kana: ["す", "し"]
+    kana: ["す", "し"],
+    group: "food"
   },
   {
     word: "せんせい",
@@ -244,7 +341,8 @@ const VOCAB_ITEMS = [
     meaning: "선생님",
     example: "せんせいは しんせつです。",
     note: "직업/호칭 표현으로 자주 나옵니다.",
-    kana: ["せ", "ん"]
+    kana: ["せ", "ん"],
+    group: "daily"
   },
   {
     word: "たまご",
@@ -252,7 +350,8 @@ const VOCAB_ITEMS = [
     meaning: "달걀",
     example: "たまごを かいます。",
     note: "식재료 단어장에 자주 들어갑니다.",
-    kana: ["た", "ご"]
+    kana: ["た", "ご"],
+    group: "food"
   },
   {
     word: "ちず",
@@ -260,7 +359,8 @@ const VOCAB_ITEMS = [
     meaning: "지도",
     example: "ちずを みます。",
     note: "`ち`와 `ず`를 같이 복습하기 좋습니다.",
-    kana: ["ち", "ず"]
+    kana: ["ち", "ず"],
+    group: "place"
   },
   {
     word: "つき",
@@ -268,7 +368,8 @@ const VOCAB_ITEMS = [
     meaning: "달",
     example: "つきが きれいです。",
     note: "`tsu` 계열 읽기 훈련용입니다.",
-    kana: ["つ", "き"]
+    kana: ["つ", "き"],
+    group: "nature"
   },
   {
     word: "てがみ",
@@ -276,7 +377,8 @@ const VOCAB_ITEMS = [
     meaning: "편지",
     example: "てがみを かきます。",
     note: "동사 `かく`와 잘 묶입니다.",
-    kana: ["て", "が", "み"]
+    kana: ["て", "が", "み"],
+    group: "daily"
   },
   {
     word: "とけい",
@@ -284,7 +386,8 @@ const VOCAB_ITEMS = [
     meaning: "시계",
     example: "とけいを みて ください。",
     note: "시간 표현으로 확장하기 쉽습니다.",
-    kana: ["と", "けい"]
+    kana: ["と", "けい"],
+    group: "daily"
   },
   {
     word: "ねこ",
@@ -292,7 +395,8 @@ const VOCAB_ITEMS = [
     meaning: "고양이",
     example: "ねこが います。",
     note: "`います` 패턴과 같이 외우기 좋습니다.",
-    kana: ["ね", "こ"]
+    kana: ["ね", "こ"],
+    group: "nature"
   },
   {
     word: "はな",
@@ -300,7 +404,8 @@ const VOCAB_ITEMS = [
     meaning: "꽃",
     example: "はなが きれいです。",
     note: "동음이의어도 있다는 점을 같이 기억하면 좋습니다.",
-    kana: ["は", "な"]
+    kana: ["は", "な"],
+    group: "nature"
   },
   {
     word: "ひと",
@@ -308,7 +413,8 @@ const VOCAB_ITEMS = [
     meaning: "사람",
     example: "あの ひとは だれですか。",
     note: "기본 명사 중 사용 빈도가 높습니다.",
-    kana: ["ひ", "と"]
+    kana: ["ひ", "と"],
+    group: "daily"
   },
   {
     word: "ふね",
@@ -317,7 +423,8 @@ const VOCAB_ITEMS = [
     accepted: ["배", "선박"],
     example: "ふねで いきます。",
     note: "`ふ`를 `fu`로 읽는 감각을 익히기 좋습니다.",
-    kana: ["ふ", "ね"]
+    kana: ["ふ", "ね"],
+    group: "daily"
   },
   {
     word: "へや",
@@ -325,7 +432,8 @@ const VOCAB_ITEMS = [
     meaning: "방",
     example: "へやが ひろいです。",
     note: "장소 묘사 예문에서 자주 나옵니다.",
-    kana: ["へ", "や"]
+    kana: ["へ", "や"],
+    group: "place"
   },
   {
     word: "ほん",
@@ -333,7 +441,8 @@ const VOCAB_ITEMS = [
     meaning: "책",
     example: "ほんを よみます。",
     note: "목적어 조사와 같이 반복하기 좋습니다.",
-    kana: ["ほ", "ん"]
+    kana: ["ほ", "ん"],
+    group: "daily"
   },
   {
     word: "みず",
@@ -341,7 +450,8 @@ const VOCAB_ITEMS = [
     meaning: "물",
     example: "みずを のみます。",
     note: "가장 기본적인 생존 회화 단어입니다.",
-    kana: ["み", "ず"]
+    kana: ["み", "ず"],
+    group: "food"
   },
   {
     word: "やさい",
@@ -349,7 +459,8 @@ const VOCAB_ITEMS = [
     meaning: "채소",
     example: "やさいを たべます。",
     note: "음식 단어 묶음으로 확장 가능합니다.",
-    kana: ["や", "さ"]
+    kana: ["や", "さ"],
+    group: "food"
   },
   {
     word: "ゆき",
@@ -357,7 +468,8 @@ const VOCAB_ITEMS = [
     meaning: "눈",
     example: "ゆきが ふっています。",
     note: "날씨 표현과 함께 외우기 좋습니다.",
-    kana: ["ゆ", "き"]
+    kana: ["ゆ", "き"],
+    group: "weather"
   },
   {
     word: "よる",
@@ -365,7 +477,8 @@ const VOCAB_ITEMS = [
     meaning: "밤",
     example: "よるに べんきょうします。",
     note: "시간대 표현의 기본 단어입니다.",
-    kana: ["よ", "る"]
+    kana: ["よ", "る"],
+    group: "daily"
   },
   {
     word: "りんご",
@@ -373,7 +486,8 @@ const VOCAB_ITEMS = [
     meaning: "사과",
     example: "りんごが すきです。",
     note: "초급 단어장에서 매우 자주 나옵니다.",
-    kana: ["り", "ん", "ご"]
+    kana: ["り", "ん", "ご"],
+    group: "food"
   },
   {
     word: "れいぞうこ",
@@ -381,7 +495,8 @@ const VOCAB_ITEMS = [
     meaning: "냉장고",
     example: "れいぞうこに あります。",
     note: "생활 단어로 실전 활용도가 높습니다.",
-    kana: ["れ", "い", "ぞ", "う", "こ"]
+    kana: ["れ", "い", "ぞ", "う", "こ"],
+    group: "daily"
   },
   {
     word: "ろうか",
@@ -389,7 +504,8 @@ const VOCAB_ITEMS = [
     meaning: "복도",
     example: "ろうかを あるきます。",
     note: "장음 `ou` 패턴을 같이 익힐 수 있습니다.",
-    kana: ["ろ", "う", "か"]
+    kana: ["ろ", "う", "か"],
+    group: "place"
   },
   {
     word: "おんがく",
@@ -397,7 +513,8 @@ const VOCAB_ITEMS = [
     meaning: "음악",
     example: "おんがくを ききます。",
     note: "`ん` 다음 자음 연결을 익히기 좋습니다.",
-    kana: ["お", "ん", "が", "く"]
+    kana: ["お", "ん", "が", "く"],
+    group: "daily"
   },
   {
     word: "コーヒー",
@@ -405,7 +522,8 @@ const VOCAB_ITEMS = [
     meaning: "커피",
     example: "コーヒーを のみます。",
     note: "카타카나 단어의 대표 예시입니다.",
-    kana: ["コ", "ヒ"]
+    kana: ["コ", "ヒ"],
+    group: "food"
   },
   {
     word: "ケーキ",
@@ -413,7 +531,8 @@ const VOCAB_ITEMS = [
     meaning: "케이크",
     example: "ケーキを たべます。",
     note: "장음 카타카나 단어입니다.",
-    kana: ["ケ", "キ"]
+    kana: ["ケ", "キ"],
+    group: "food"
   },
   {
     word: "ホテル",
@@ -421,7 +540,137 @@ const VOCAB_ITEMS = [
     meaning: "호텔",
     example: "ホテルに とまります。",
     note: "장소 표현과 같이 쓰기 좋습니다.",
-    kana: ["ホ", "テ", "ル"]
+    kana: ["ホ", "テ", "ル"],
+    group: "place"
+  },
+  {
+    word: "あめ",
+    reading: "ame",
+    meaning: "비",
+    example: "きょうは あめです。",
+    note: "날씨 표현에서 가장 자주 나오는 기본 단어입니다.",
+    kana: ["あ", "め"],
+    group: "weather"
+  },
+  {
+    word: "はれ",
+    reading: "hare",
+    meaning: "맑음",
+    accepted: ["맑음", "화창함"],
+    example: "あしたは はれです。",
+    note: "날씨 예보 표현과 같이 외우기 좋습니다.",
+    kana: ["は", "れ"],
+    group: "weather"
+  },
+  {
+    word: "くもり",
+    reading: "kumori",
+    meaning: "흐림",
+    example: "きょうは くもりです。",
+    note: "날씨 상태를 묘사할 때 자주 쓰입니다.",
+    kana: ["く", "も", "り"],
+    group: "weather"
+  },
+  {
+    word: "かぜ",
+    reading: "kaze",
+    meaning: "바람",
+    example: "かぜが つよいです。",
+    note: "날씨와 자연 현상을 함께 떠올리면 기억이 잘 남습니다.",
+    kana: ["か", "ぜ"],
+    group: "weather"
+  },
+  {
+    word: "ひとつ",
+    reading: "hitotsu",
+    meaning: "하나",
+    example: "りんごが ひとつ あります。",
+    note: "숫자 표현은 기본형부터 소리로 익히는 편이 좋습니다.",
+    kana: ["ひ", "と", "つ"],
+    group: "number"
+  },
+  {
+    word: "ふたつ",
+    reading: "futatsu",
+    meaning: "둘",
+    example: "パンが ふたつ あります。",
+    note: "짧은 단어라서 발음과 의미를 바로 연결하기 좋습니다.",
+    kana: ["ふ", "た", "つ"],
+    group: "number"
+  },
+  {
+    word: "みっつ",
+    reading: "mittsu",
+    meaning: "셋",
+    example: "コップが みっつ あります。",
+    note: "카운터 표현과 연결하기 좋은 숫자입니다.",
+    kana: ["み", "っ", "つ"],
+    group: "number"
+  },
+  {
+    word: "よっつ",
+    reading: "yottsu",
+    meaning: "넷",
+    example: "へやに いすが よっつ あります。",
+    note: "`し`보다 `よん`이 초급에서는 더 자주 쓰입니다.",
+    kana: ["よ", "っ", "つ"],
+    group: "number"
+  },
+  {
+    word: "いつつ",
+    reading: "itsutsu",
+    meaning: "다섯",
+    example: "りんごが いつつ あります。",
+    note: "개수 표현과 함께 반복하면 감각이 빠르게 잡힙니다.",
+    kana: ["い", "つ", "つ"],
+    group: "number"
+  },
+  {
+    word: "うれしい",
+    reading: "ureshii",
+    meaning: "기쁘다",
+    example: "とても うれしいです。",
+    note: "감정 형용사는 `です`와 붙여서 통째로 익히는 편이 좋습니다.",
+    kana: ["う", "れ", "し", "い"],
+    group: "emotion"
+  },
+  {
+    word: "かなしい",
+    reading: "kanashii",
+    meaning: "슬프다",
+    example: "すこし かなしいです。",
+    note: "반대 감정 단어와 짝으로 외우면 오래 갑니다.",
+    kana: ["か", "な", "し", "い"],
+    group: "emotion"
+  },
+  {
+    word: "たのしい",
+    reading: "tanoshii",
+    meaning: "즐겁다, 재미있다",
+    accepted: ["즐겁다", "재미있다"],
+    example: "きょうは たのしいです。",
+    note: "회화에서 자주 쓰이는 대표적인 감정 형용사입니다.",
+    kana: ["た", "の", "し", "い"],
+    group: "emotion"
+  },
+  {
+    word: "こわい",
+    reading: "kowai",
+    meaning: "무섭다",
+    example: "その えいがは こわいです。",
+    note: "감상을 말할 때 자주 나오는 형용사입니다.",
+    kana: ["こ", "わ", "い"],
+    group: "emotion"
+  },
+  {
+    word: "げんき",
+    reading: "genki",
+    meaning: "건강함, 활기참",
+    accepted: ["건강함", "활기참", "건강하다", "활기차다"],
+    example: "きょうも げんきです。",
+    note: "인사 표현과 같이 묶으면 실전 활용도가 높습니다.",
+    kana: ["げ", "ん", "き"],
+    group: "emotion"
   }
 ];
 
@@ -510,6 +759,7 @@ const CATEGORY_CONFIG = {
 
 const heroContext = document.getElementById("heroContext");
 const optionToolbar = document.getElementById("optionToolbar");
+const vocabGroupToolbar = document.getElementById("vocabGroupToolbar");
 const mainCardLabel = document.getElementById("mainCardLabel");
 const actionCardLabel = document.getElementById("actionCardLabel");
 const mainPanel = document.getElementById("mainPanel");
@@ -564,6 +814,7 @@ function createEmptyQuizState() {
 const state = {
   category: "hiragana",
   mode: "learn",
+  vocabGroup: "all",
   learnIndexByCategory: {
     hiragana: 0,
     katakana: 0,
@@ -576,6 +827,27 @@ const state = {
   },
   quiz: createEmptyQuizState()
 };
+
+function getVocabGroupMeta(group = state.vocabGroup) {
+  return VOCAB_GROUP_CONFIG[group] || VOCAB_GROUP_CONFIG.all;
+}
+
+function getVocabItems(group = state.vocabGroup) {
+  if (group === "all") {
+    return VOCAB_ITEMS;
+  }
+
+  return VOCAB_ITEMS.filter((item) => item.group === group);
+}
+
+function getCategoryDisplayLabel(category = state.category) {
+  if (category !== "vocab") {
+    return CATEGORY_CONFIG[category].label;
+  }
+
+  const groupLabel = getVocabGroupMeta().label;
+  return groupLabel === "전체" ? CATEGORY_CONFIG.vocab.label : `${CATEGORY_CONFIG.vocab.label} · ${groupLabel}`;
+}
 
 function clearAutoAdvanceTimer() {
   if (state.quiz.autoAdvanceTimer) {
@@ -645,6 +917,12 @@ const KANA_SETS = {
 };
 
 function getQuizIdleMessage() {
+  if (state.category === "vocab") {
+    const groupLabel = getVocabGroupMeta().label;
+    const scope = groupLabel === "전체" ? "전체 단어" : `${groupLabel} 묶음`;
+    return `${CATEGORY_CONFIG[state.category].label} 퀴즈를 시작하면 ${scope}에서 문제가 랜덤으로 출제됩니다.`;
+  }
+
   return `${CATEGORY_CONFIG[state.category].label} 퀴즈를 시작하면 문제가 랜덤으로 출제됩니다.`;
 }
 
@@ -692,7 +970,7 @@ function getCategoryItems(category) {
   }
 
   if (category === "vocab") {
-    return VOCAB_ITEMS;
+    return getVocabItems();
   }
 
   return GRAMMAR_ITEMS;
@@ -737,6 +1015,10 @@ function getAcceptedVocabAnswers(item) {
     .split(",")
     .map((entry) => entry.trim())
     .filter(Boolean);
+}
+
+function getVocabKoreanReading(item) {
+  return VOCAB_KOREAN_READING[item.word] || "";
 }
 
 function buildQuizQuestion(item) {
@@ -791,7 +1073,8 @@ function formatQuestionAnswer(question) {
   }
 
   if (state.category === "vocab") {
-    return `${question.item.word}의 뜻은 ${question.item.meaning}이고 읽기는 ${question.item.reading}입니다.`;
+    const koreanReading = getVocabKoreanReading(question.item);
+    return `${question.item.word}의 뜻은 ${question.item.meaning}이고 읽기는 ${question.item.reading}${koreanReading ? `, 한국어식 발음은 ${koreanReading}` : ""}입니다.`;
   }
 
   return `${question.item.pattern}의 뜻은 ${question.item.meaning}입니다. ${question.item.note}`;
@@ -938,7 +1221,7 @@ function setCategory(category) {
 
   state.category = category;
   ensureLearnIndexInRange(category);
-  resetQuiz(`${CATEGORY_CONFIG[category].label}로 이동했습니다. 퀴즈는 새로 시작됩니다.`);
+  resetQuiz(`${getCategoryDisplayLabel(category)}로 이동했습니다. 퀴즈는 새로 시작됩니다.`);
   renderApp();
 }
 
@@ -949,6 +1232,17 @@ function setMode(mode) {
 
   state.mode = mode;
   resetQuiz();
+  renderApp();
+}
+
+function setVocabGroup(group) {
+  if (state.category !== "vocab" || state.vocabGroup === group || !VOCAB_GROUP_CONFIG[group]) {
+    return;
+  }
+
+  state.vocabGroup = group;
+  ensureLearnIndexInRange("vocab");
+  resetQuiz(`${getVocabGroupMeta().label} 묶음으로 변경했습니다. 퀴즈는 다시 시작됩니다.`);
   renderApp();
 }
 
@@ -987,11 +1281,32 @@ function toggleKanaOption(key) {
   renderApp();
 }
 
+function renderVocabGroupToolbar() {
+  vocabGroupToolbar.innerHTML = Object.entries(VOCAB_GROUP_CONFIG)
+    .map(([key, config]) => {
+      const isActive = state.vocabGroup === key;
+      return `
+        <button
+          class="ghost-button subcategory-button ${isActive ? "is-active" : ""}"
+          type="button"
+          data-vocab-group="${escapeHtml(key)}"
+          aria-pressed="${String(isActive)}"
+        >
+          ${escapeHtml(config.label)}
+        </button>
+      `;
+    })
+    .join("");
+}
+
 function renderHeroContext() {
   let context = CATEGORY_CONFIG[state.category].description;
 
   if (state.category === "hiragana") {
     context += ` 현재 범위: ${getKanaDeckSummary(state.category)}.`;
+  } else if (state.category === "vocab") {
+    const vocabItems = getCategoryItems("vocab");
+    context += ` 현재 묶음: ${getVocabGroupMeta().label} (${vocabItems.length}개). ${getVocabGroupMeta().description}`;
   }
 
   context += ` 지금은 ${state.mode === "learn" ? "학습" : "퀴즈"} 모드입니다.`;
@@ -1023,6 +1338,14 @@ function renderStaticUi() {
       button.setAttribute("aria-pressed", String(enabled));
       button.textContent = `${config.label}: ${enabled ? "ON" : "OFF"}`;
     });
+  }
+
+  const showVocabGroupToolbar = state.category === "vocab";
+  vocabGroupToolbar.hidden = !showVocabGroupToolbar;
+  vocabGroupToolbar.style.display = showVocabGroupToolbar ? "flex" : "none";
+
+  if (showVocabGroupToolbar) {
+    renderVocabGroupToolbar();
   }
 
   renderHeroContext();
@@ -1080,17 +1403,22 @@ function renderKanaLearn(item) {
 }
 
 function renderVocabLearn(item) {
+  const groupMeta = getVocabGroupMeta(item.group);
+  const koreanReading = getVocabKoreanReading(item);
+
   return `
     <div class="learn-stage">
       <div>
         <h2 class="stage-heading">단어 학습</h2>
-        <p class="stage-copy">읽기, 뜻, 예문을 한 묶음으로 익힌 뒤 뜻 맞히기 퀴즈로 넘어가세요.</p>
+        <p class="stage-copy">${escapeHtml(groupMeta.label)} 묶음에서 읽기, 뜻, 예문을 한 세트로 익힌 뒤 뜻 맞히기 퀴즈로 넘어가세요.</p>
       </div>
       <div class="symbol-frame">
         <div class="prompt-main is-text">${escapeHtml(item.word)}</div>
       </div>
       <div class="meta-strip">
+        <span class="meta-pill">분류 ${escapeHtml(groupMeta.label)}</span>
         <span class="meta-pill">읽기 ${escapeHtml(item.reading)}</span>
+        ${koreanReading ? `<span class="meta-pill">발음 ${escapeHtml(koreanReading)}</span>` : ""}
         <span class="meta-pill">뜻 ${escapeHtml(item.meaning)}</span>
       </div>
       <div class="info-panel">
@@ -1149,16 +1477,23 @@ function renderLearnActionPanel() {
   const items = getCategoryItems(state.category);
   const currentIndex = state.learnIndexByCategory[state.category] + 1;
   const item = getCurrentLearnItem();
+
+  if (!item) {
+    return `
+      <div class="action-stack">
+        <div class="empty-card">현재 범위에 표시할 학습 항목이 없습니다.</div>
+      </div>
+    `;
+  }
+
   const detail =
     state.category === "hiragana"
       ? `현재 범위는 ${getKanaDeckSummary(state.category)}이며 총 ${items.length}문자가 포함됩니다.`
-      : `현재 항목의 핵심은 ${
-          state.category === "katakana"
-            ? "외래어 예시와 함께 문자를 모양째 익히는 것"
-            : state.category === "vocab"
-              ? "뜻과 읽기를 같이 묶어 기억하는 것"
-              : "문형의 의미와 쓰임을 동시에 익히는 것"
-        }입니다.`;
+      : state.category === "katakana"
+        ? "현재 항목의 핵심은 외래어 예시와 함께 문자를 모양째 익히는 것입니다."
+        : state.category === "vocab"
+          ? `현재 묶음은 ${getVocabGroupMeta().label}이며 총 ${items.length}개 단어가 포함됩니다.`
+          : "현재 항목의 핵심은 문형의 의미와 쓰임을 동시에 익히는 것입니다.";
 
   const currentTitle =
     state.category === "grammar"
@@ -1196,7 +1531,7 @@ function renderQuizMainPanel() {
     return `
       <div class="quiz-stage">
         <div>
-          <h2 class="stage-heading">${CATEGORY_CONFIG[state.category].label} 퀴즈 준비</h2>
+          <h2 class="stage-heading">${getCategoryDisplayLabel()} 퀴즈 준비</h2>
           <p class="stage-copy">${escapeHtml(getQuizIdleMessage())}</p>
         </div>
         <div class="prompt-frame">
@@ -1204,7 +1539,11 @@ function renderQuizMainPanel() {
         </div>
         <div class="info-panel">
           <h3 class="stage-heading">출제 방식</h3>
-          <p class="stage-copy">${escapeHtml(CATEGORY_CONFIG[state.category].description)}</p>
+          <p class="stage-copy">${escapeHtml(
+            state.category === "vocab"
+              ? getVocabGroupMeta().description
+              : CATEGORY_CONFIG[state.category].description
+          )}</p>
         </div>
       </div>
     `;
@@ -1213,7 +1552,7 @@ function renderQuizMainPanel() {
   return `
     <div class="quiz-stage">
       <div>
-        <h2 class="stage-heading">${CATEGORY_CONFIG[state.category].label} 퀴즈</h2>
+        <h2 class="stage-heading">${getCategoryDisplayLabel()} 퀴즈</h2>
         <p class="stage-copy">${escapeHtml(question.helper)}</p>
       </div>
       <div class="prompt-frame">
@@ -1332,7 +1671,7 @@ function renderQuizActionPanel() {
 }
 
 function renderMainPanel() {
-  mainCardLabel.textContent = `${CATEGORY_CONFIG[state.category].label} ${state.mode === "learn" ? "학습" : "퀴즈"}`;
+  mainCardLabel.textContent = `${getCategoryDisplayLabel()} ${state.mode === "learn" ? "학습" : "퀴즈"}`;
   actionCardLabel.textContent =
     state.mode === "learn"
       ? "학습 컨트롤"
@@ -1352,10 +1691,10 @@ function renderStatusPanel() {
     const thirdStat =
       state.category === "hiragana"
         ? getKanaDeckSummary(state.category)
-        : state.category === "katakana"
+      : state.category === "katakana"
           ? "기본 카타카나"
         : state.category === "vocab"
-          ? "읽기·뜻·예문"
+          ? `${getVocabGroupMeta().label} 묶음`
           : "문형·의미·예문";
 
     statusPanel.innerHTML = `
@@ -1450,11 +1789,53 @@ function getGuideItems() {
   }
 
   if (state.category === "vocab") {
+    if (state.vocabGroup === "weather") {
+      return state.mode === "learn"
+        ? [
+            "날씨 단어는 `きょうは ... です` 패턴과 같이 묶어 외우면 회화 전환이 빠릅니다.",
+            "`あめ / はれ / くもり / ゆき`처럼 서로 대비되는 단어를 세트로 반복하세요.",
+            "예문을 읽을 때는 상태를 머릿속 장면으로 떠올리면 기억이 잘 남습니다."
+          ]
+        : [
+            "날씨 묶음은 비슷한 문장 구조가 반복되니 뜻을 맞힌 뒤 예문도 같이 읽으세요.",
+            "`눈`과 `비`처럼 헷갈리는 단어는 오답 후 바로 학습 모드에서 다시 확인하는 편이 좋습니다.",
+            "형용사나 상태 명사는 `です`와 붙여서 소리 내면 정착이 빨라집니다."
+          ];
+    }
+
+    if (state.vocabGroup === "number") {
+      return state.mode === "learn"
+        ? [
+            "숫자는 단독 의미보다 `몇 개`, `몇 분` 같은 세트로 떠올리는 편이 오래 갑니다.",
+            "`よん`처럼 실제 회화에서 더 자주 쓰는 읽기를 먼저 고정하세요.",
+            "짧은 단어일수록 소리와 의미를 즉시 연결하는 훈련이 중요합니다."
+          ]
+        : [
+            "숫자 퀴즈는 빠르게 대답해도 좋지만, 맞힌 뒤 발음을 한 번 더 읽어보는 편이 좋습니다.",
+            "헷갈리면 한국어 숫자 순서를 세지 말고 일본어 표기 자체를 바로 인식하세요.",
+            "숫자는 다음 단계에서 날짜와 시간 표현으로 확장하기 좋습니다."
+          ];
+    }
+
+    if (state.vocabGroup === "emotion") {
+      return state.mode === "learn"
+        ? [
+            "감정 형용사는 `...です` 형태로 통째로 외우면 바로 말하기에 쓸 수 있습니다.",
+            "`うれしい / かなしい`처럼 반대 감정을 쌍으로 반복하면 기억이 오래 갑니다.",
+            "`げんき`처럼 상태를 나타내는 표현은 인사 문장과 연결해보세요."
+          ]
+        : [
+            "감정 단어는 의미만 맞히지 말고 어떤 상황에서 쓰는지도 같이 떠올려야 합니다.",
+            "쉼표가 있는 뜻은 대표 의미만 맞혀도 되지만, 뉘앙스 차이는 학습 모드에서 다시 확인하세요.",
+            "맞힌 뒤 `きょうは ... です`로 짧은 문장을 만들어보면 실전 전환이 빨라집니다."
+          ];
+    }
+
     return state.mode === "learn"
       ? [
           "단어는 `표기 + 읽기 + 뜻 + 예문`을 한 묶음으로 외우는 편이 오래 갑니다.",
           "뜻만 보지 말고 예문 속 조사까지 같이 보면 문법과 연결됩니다.",
-          "히라가나 단어와 카타카나 단어를 함께 보는 것이 실제 읽기 감각에 좋습니다."
+          "하위 카테고리를 좁혀서 반복한 뒤 전체 묶음으로 다시 섞어보면 복습 효율이 높습니다."
         ]
       : [
           "단어 퀴즈는 일본어 단어를 보고 한국어 뜻을 맞히는 방식입니다.",
@@ -1565,6 +1946,16 @@ function handleActionSubmit(event) {
   submitTextAnswer(String(formData.get("answer") || ""));
 }
 
+function handleVocabGroupClick(event) {
+  const button = event.target.closest("[data-vocab-group]");
+
+  if (!button) {
+    return;
+  }
+
+  setVocabGroup(button.dataset.vocabGroup);
+}
+
 Object.entries(categoryButtons).forEach(([key, button]) => {
   button.addEventListener("click", () => setCategory(key));
 });
@@ -1577,6 +1968,7 @@ Object.keys(OPTION_CONFIG).forEach((key) => {
   optionButtons[key].addEventListener("click", () => toggleKanaOption(key));
 });
 
+vocabGroupToolbar.addEventListener("click", handleVocabGroupClick);
 actionPanel.addEventListener("click", handleActionClick);
 actionPanel.addEventListener("submit", handleActionSubmit);
 

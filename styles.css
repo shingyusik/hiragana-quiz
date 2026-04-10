@@ -221,6 +221,7 @@ button:disabled {
 .page-tab.is-active,
 .mode-tab.is-active,
 .option-button.is-active,
+.subcategory-button.is-active,
 .choice-button.is-selected {
   color: #fff9f0;
   background: linear-gradient(135deg, #b4542e, var(--accent-deep));
@@ -229,6 +230,10 @@ button:disabled {
 
 .option-button {
   min-width: 112px;
+}
+
+.subcategory-button {
+  min-width: 96px;
 }
 
 .page-tab {
