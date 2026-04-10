@@ -174,8 +174,8 @@ const VOCAB_GROUP_CONFIG = {
     description: "위치, 이동, 공간과 연결되는 단어 묶음입니다."
   },
   daily: {
-    label: "생활",
-    description: "일상 회화에서 자주 부딪히는 기본 명사들입니다."
+    label: "일상 표현",
+    description: "하나의 주제에 고정하기 애매하지만 자주 쓰이는 기본 단어입니다."
   },
   nature: {
     label: "자연",
@@ -185,6 +185,17 @@ const VOCAB_GROUP_CONFIG = {
     label: "접속사",
     description: "문장과 문장을 자연스럽게 이어주는 기본 연결 표현입니다."
   }
+};
+
+const VOCAB_GROUP_TAGS = {
+  weather: ["날씨"],
+  number: ["숫자"],
+  emotion: ["감정"],
+  food: ["음식"],
+  place: ["장소"],
+  daily: ["일상 표현"],
+  nature: ["자연"],
+  conjunction: ["접속사"]
 };
 
 const VOCAB_KOREAN_READING = {
@@ -270,7 +281,8 @@ const VOCAB_ITEMS = [
     example: "あさです。",
     note: "시간 표현의 기본 단어입니다.",
     kana: ["あ", "さ"],
-    group: "daily"
+    group: "daily",
+    tags: ["시간", "회화"]
   },
   {
     word: "いえ",
@@ -279,7 +291,8 @@ const VOCAB_ITEMS = [
     example: "いえに かえります。",
     note: "장소 표현에서 자주 나옵니다.",
     kana: ["い", "え"],
-    group: "place"
+    group: "place",
+    tags: ["생활 공간", "이동"]
   },
   {
     word: "うみ",
@@ -288,7 +301,8 @@ const VOCAB_ITEMS = [
     example: "うみが きれいです。",
     note: "형용사 예문과 같이 외우기 좋습니다.",
     kana: ["う", "み"],
-    group: "nature"
+    group: "nature",
+    tags: ["장소", "여행"]
   },
   {
     word: "えき",
@@ -307,7 +321,8 @@ const VOCAB_ITEMS = [
     example: "おちゃを のみます。",
     note: "조사 `を`와 같이 복습하기 좋습니다.",
     kana: ["お", "ちゃ"],
-    group: "food"
+    group: "food",
+    tags: ["음료", "회화"]
   },
   {
     word: "かさ",
@@ -316,7 +331,8 @@ const VOCAB_ITEMS = [
     example: "かさを もっています。",
     note: "가장 기본적인 생활 단어 중 하나입니다.",
     kana: ["か", "さ"],
-    group: "daily"
+    group: "daily",
+    tags: ["생활 물건", "날씨"]
   },
   {
     word: "きょう",
@@ -325,7 +341,8 @@ const VOCAB_ITEMS = [
     example: "きょうは いそがしいです。",
     note: "요음과 장음 느낌을 같이 익힐 수 있습니다.",
     kana: ["きょ", "う"],
-    group: "daily"
+    group: "daily",
+    tags: ["시간", "회화"]
   },
   {
     word: "くつ",
@@ -334,7 +351,8 @@ const VOCAB_ITEMS = [
     example: "くつを ぬぎます。",
     note: "`つ` 발음 연습에 좋습니다.",
     kana: ["く", "つ"],
-    group: "daily"
+    group: "daily",
+    tags: ["생활 물건"]
   },
   {
     word: "さかな",
@@ -370,7 +388,8 @@ const VOCAB_ITEMS = [
     example: "せんせいは しんせつです。",
     note: "직업/호칭 표현으로 자주 나옵니다.",
     kana: ["せ", "ん"],
-    group: "daily"
+    group: "daily",
+    tags: ["사람", "호칭"]
   },
   {
     word: "たまご",
@@ -397,7 +416,8 @@ const VOCAB_ITEMS = [
     example: "つきが きれいです。",
     note: "`tsu` 계열 읽기 훈련용입니다.",
     kana: ["つ", "き"],
-    group: "nature"
+    group: "nature",
+    tags: ["시간", "하늘"]
   },
   {
     word: "てがみ",
@@ -406,7 +426,8 @@ const VOCAB_ITEMS = [
     example: "てがみを かきます。",
     note: "동사 `かく`와 잘 묶입니다.",
     kana: ["て", "が", "み"],
-    group: "daily"
+    group: "daily",
+    tags: ["생활 물건", "행동"]
   },
   {
     word: "とけい",
@@ -415,7 +436,8 @@ const VOCAB_ITEMS = [
     example: "とけいを みて ください。",
     note: "시간 표현으로 확장하기 쉽습니다.",
     kana: ["と", "けい"],
-    group: "daily"
+    group: "daily",
+    tags: ["시간", "생활 물건"]
   },
   {
     word: "ねこ",
@@ -424,7 +446,8 @@ const VOCAB_ITEMS = [
     example: "ねこが います。",
     note: "`います` 패턴과 같이 외우기 좋습니다.",
     kana: ["ね", "こ"],
-    group: "nature"
+    group: "nature",
+    tags: ["동물", "존재 표현"]
   },
   {
     word: "はな",
@@ -433,7 +456,8 @@ const VOCAB_ITEMS = [
     example: "はなが きれいです。",
     note: "동음이의어도 있다는 점을 같이 기억하면 좋습니다.",
     kana: ["は", "な"],
-    group: "nature"
+    group: "nature",
+    tags: ["식물", "묘사"]
   },
   {
     word: "ひと",
@@ -442,7 +466,8 @@ const VOCAB_ITEMS = [
     example: "あの ひとは だれですか。",
     note: "기본 명사 중 사용 빈도가 높습니다.",
     kana: ["ひ", "と"],
-    group: "daily"
+    group: "daily",
+    tags: ["사람", "회화"]
   },
   {
     word: "ふね",
@@ -452,7 +477,8 @@ const VOCAB_ITEMS = [
     example: "ふねで いきます。",
     note: "`ふ`를 `fu`로 읽는 감각을 익히기 좋습니다.",
     kana: ["ふ", "ね"],
-    group: "daily"
+    group: "daily",
+    tags: ["교통", "이동"]
   },
   {
     word: "へや",
@@ -461,7 +487,8 @@ const VOCAB_ITEMS = [
     example: "へやが ひろいです。",
     note: "장소 묘사 예문에서 자주 나옵니다.",
     kana: ["へ", "や"],
-    group: "place"
+    group: "place",
+    tags: ["생활 공간", "묘사"]
   },
   {
     word: "ほん",
@@ -470,7 +497,8 @@ const VOCAB_ITEMS = [
     example: "ほんを よみます。",
     note: "목적어 조사와 같이 반복하기 좋습니다.",
     kana: ["ほ", "ん"],
-    group: "daily"
+    group: "daily",
+    tags: ["생활 물건", "학습"]
   },
   {
     word: "みず",
@@ -479,7 +507,8 @@ const VOCAB_ITEMS = [
     example: "みずを のみます。",
     note: "가장 기본적인 생존 회화 단어입니다.",
     kana: ["み", "ず"],
-    group: "food"
+    group: "food",
+    tags: ["음료", "생활"]
   },
   {
     word: "やさい",
@@ -497,7 +526,8 @@ const VOCAB_ITEMS = [
     example: "ゆきが ふっています。",
     note: "날씨 표현과 함께 외우기 좋습니다.",
     kana: ["ゆ", "き"],
-    group: "weather"
+    group: "weather",
+    tags: ["자연"]
   },
   {
     word: "よる",
@@ -506,7 +536,8 @@ const VOCAB_ITEMS = [
     example: "よるに べんきょうします。",
     note: "시간대 표현의 기본 단어입니다.",
     kana: ["よ", "る"],
-    group: "daily"
+    group: "daily",
+    tags: ["시간", "회화"]
   },
   {
     word: "りんご",
@@ -524,7 +555,8 @@ const VOCAB_ITEMS = [
     example: "れいぞうこに あります。",
     note: "생활 단어로 실전 활용도가 높습니다.",
     kana: ["れ", "い", "ぞ", "う", "こ"],
-    group: "daily"
+    group: "daily",
+    tags: ["생활 물건", "음식"]
   },
   {
     word: "ろうか",
@@ -542,7 +574,8 @@ const VOCAB_ITEMS = [
     example: "おんがくを ききます。",
     note: "`ん` 다음 자음 연결을 익히기 좋습니다.",
     kana: ["お", "ん", "が", "く"],
-    group: "daily"
+    group: "daily",
+    tags: ["취미", "회화"]
   },
   {
     word: "コーヒー",
@@ -569,7 +602,8 @@ const VOCAB_ITEMS = [
     example: "ホテルに とまります。",
     note: "장소 표현과 같이 쓰기 좋습니다.",
     kana: ["ホ", "テ", "ル"],
-    group: "place"
+    group: "place",
+    tags: ["여행", "카타카나"]
   },
   {
     word: "あめ",
@@ -588,7 +622,8 @@ const VOCAB_ITEMS = [
     example: "あしたは はれです。",
     note: "날씨 예보 표현과 같이 외우기 좋습니다.",
     kana: ["は", "れ"],
-    group: "weather"
+    group: "weather",
+    tags: ["상태"]
   },
   {
     word: "くもり",
@@ -698,7 +733,8 @@ const VOCAB_ITEMS = [
     example: "きょうも げんきです。",
     note: "인사 표현과 같이 묶으면 실전 활용도가 높습니다.",
     kana: ["げ", "ん", "き"],
-    group: "emotion"
+    group: "emotion",
+    tags: ["상태", "인사", "일상 표현"]
   },
   {
     word: "そして",
@@ -707,7 +743,8 @@ const VOCAB_ITEMS = [
     example: "あさです。そして はれです。",
     note: "앞 문장에 내용을 자연스럽게 이어 붙일 때 쓰는 기본 접속사입니다.",
     kana: ["そ", "し", "て"],
-    group: "conjunction"
+    group: "conjunction",
+    tags: ["순접", "기본"]
   },
   {
     word: "でも",
@@ -717,7 +754,8 @@ const VOCAB_ITEMS = [
     example: "あめです。でも いきます。",
     note: "앞 내용과 반대되는 흐름을 만들 때 자주 씁니다.",
     kana: ["で", "も"],
-    group: "conjunction"
+    group: "conjunction",
+    tags: ["역접", "회화"]
   },
   {
     word: "しかし",
@@ -727,7 +765,8 @@ const VOCAB_ITEMS = [
     example: "たのしいです。しかし むずかしいです。",
     note: "`でも`보다 조금 더 딱딱하고 글말 느낌이 있는 역접 표현입니다.",
     kana: ["し", "か", "し"],
-    group: "conjunction"
+    group: "conjunction",
+    tags: ["역접", "글말"]
   },
   {
     word: "だから",
@@ -737,7 +776,8 @@ const VOCAB_ITEMS = [
     example: "きょうは あめです。だから かさを もっています。",
     note: "이유를 말한 뒤 결과를 이어줄 때 쓰는 초급 핵심 표현입니다.",
     kana: ["だ", "か", "ら"],
-    group: "conjunction"
+    group: "conjunction",
+    tags: ["이유", "결과", "회화"]
   },
   {
     word: "それから",
@@ -747,7 +787,8 @@ const VOCAB_ITEMS = [
     example: "ほんを よみます。それから てがみを かきます。",
     note: "시간 순서대로 다음 행동을 이어 말할 때 쓰기 좋습니다.",
     kana: ["そ", "れ", "か", "ら"],
-    group: "conjunction"
+    group: "conjunction",
+    tags: ["순서", "회화"]
   },
   {
     word: "また",
@@ -767,7 +808,8 @@ const VOCAB_ITEMS = [
     example: "コーヒーですか。それとも おちゃですか。",
     note: "두 선택지를 놓고 묻는 질문에서 자주 나오는 연결 표현입니다.",
     kana: ["そ", "れ", "と", "も"],
-    group: "conjunction"
+    group: "conjunction",
+    tags: ["선택", "질문"]
   },
   {
     word: "つまり",
@@ -1287,6 +1329,10 @@ function getVocabKoreanReading(item) {
   return VOCAB_KOREAN_READING[item.word] || "";
 }
 
+function getVocabTags(item) {
+  return [...new Set([...(VOCAB_GROUP_TAGS[item.group] || []), ...(item.tags || [])])];
+}
+
 function buildQuizQuestion(item) {
   if (CATEGORY_CONFIG[state.category].type === "kana") {
     return {
@@ -1671,6 +1717,7 @@ function renderKanaLearn(item) {
 function renderVocabLearn(item) {
   const groupMeta = getVocabGroupMeta(item.group);
   const koreanReading = getVocabKoreanReading(item);
+  const vocabTags = getVocabTags(item);
 
   return `
     <div class="learn-stage">
@@ -1691,8 +1738,13 @@ function renderVocabLearn(item) {
         <h3 class="stage-heading">예문과 메모</h3>
         <p class="stage-copy">${escapeHtml(item.example)}</p>
         <p class="helper-copy">${escapeHtml(item.note)}</p>
+        <p class="helper-copy">문자 조각</p>
         <div class="tag-list">
           ${item.kana.map((kana) => `<span class="tag-chip">${escapeHtml(kana)}</span>`).join("")}
+        </div>
+        <p class="helper-copy">태그</p>
+        <div class="tag-list">
+          ${vocabTags.map((tag) => `<span class="tag-chip">${escapeHtml(tag)}</span>`).join("")}
         </div>
       </div>
     </div>
@@ -2055,6 +2107,20 @@ function getGuideItems() {
   }
 
   if (state.category === "vocab") {
+    if (state.vocabGroup === "daily") {
+      return state.mode === "learn"
+        ? [
+            "일상 표현 묶음은 한 주제에 딱 고정하기 애매하지만 자주 쓰이는 단어를 모아둔 완충 카테고리입니다.",
+            "대표 분류는 단순하게 유지하고, 태그에서 시간·사람·생활 물건처럼 겹치는 성격을 확인하세요.",
+            "`きょう / よる / ひと`처럼 자주 나오는 단어는 짧은 문장으로 바로 연결해보면 기억이 오래 갑니다."
+          ]
+        : [
+            "일상 표현 퀴즈는 뜻을 맞힌 뒤 태그를 보고 어떤 상황에서 쓰는지 같이 확인하세요.",
+            "애매한 단어일수록 하나의 분류명보다 예문 속 사용 장면을 기억하는 편이 좋습니다.",
+            "정답 확인 후 같은 태그의 단어를 학습 모드에서 이어 보면 복습 흐름이 자연스럽습니다."
+          ];
+    }
+
     if (state.vocabGroup === "weather") {
       return state.mode === "learn"
         ? [
