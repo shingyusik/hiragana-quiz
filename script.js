@@ -2041,6 +2041,8 @@ const mainCardLabel = document.getElementById("mainCardLabel");
 const actionCardLabel = document.getElementById("actionCardLabel");
 const mainPanel = document.getElementById("mainPanel");
 const actionPanel = document.getElementById("actionPanel");
+const chartCard = document.getElementById("chartCard");
+const chartPanel = document.getElementById("chartPanel");
 const statusPanel = document.getElementById("statusPanel");
 const notePanel = document.getElementById("notePanel");
 
@@ -2193,6 +2195,44 @@ const KANA_SETS = {
   }
 };
 
+const GOJUON_COLUMNS = ["a", "i", "u", "e", "o"];
+const GOJUON_LAYOUT = [
+  { label: "모음", cells: ["あ", "い", "う", "え", "お"] },
+  { label: "k", cells: ["か", "き", "く", "け", "こ"] },
+  { label: "s", cells: ["さ", "し", "す", "せ", "そ"] },
+  { label: "t", cells: ["た", "ち", "つ", "て", "と"] },
+  { label: "n", cells: ["な", "に", "ぬ", "ね", "の"] },
+  { label: "h", cells: ["は", "ひ", "ふ", "へ", "ほ"] },
+  { label: "m", cells: ["ま", "み", "む", "め", "も"] },
+  { label: "y", cells: ["や", "", "ゆ", "", "よ"] },
+  { label: "r", cells: ["ら", "り", "る", "れ", "ろ"] },
+  { label: "w", cells: ["わ", "", "", "", "を"] },
+  { label: "n'", cells: ["ん", "", "", "", ""] }
+];
+const DAKUTEN_LAYOUT = [
+  { label: "g", cells: ["が", "ぎ", "ぐ", "げ", "ご"] },
+  { label: "z", cells: ["ざ", "じ", "ず", "ぜ", "ぞ"] },
+  { label: "d", cells: ["だ", "ぢ", "づ", "で", "ど"] },
+  { label: "b", cells: ["ば", "び", "ぶ", "べ", "ぼ"] }
+];
+const HANDAKUTEN_LAYOUT = [{ label: "p", cells: ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ"] }];
+const YOUON_COLUMNS = ["ya", "yu", "yo"];
+const YOUON_LAYOUT = [
+  { label: "k", cells: ["きゃ", "きゅ", "きょ"] },
+  { label: "s", cells: ["しゃ", "しゅ", "しょ"] },
+  { label: "t", cells: ["ちゃ", "ちゅ", "ちょ"] },
+  { label: "n", cells: ["にゃ", "にゅ", "にょ"] },
+  { label: "h", cells: ["ひゃ", "ひゅ", "ひょ"] },
+  { label: "m", cells: ["みゃ", "みゅ", "みょ"] },
+  { label: "r", cells: ["りゃ", "りゅ", "りょ"] }
+];
+const DAKUTEN_YOUON_LAYOUT = [
+  { label: "g", cells: ["ぎゃ", "ぎゅ", "ぎょ"] },
+  { label: "j", cells: ["じゃ", "じゅ", "じょ"] },
+  { label: "b", cells: ["びゃ", "びゅ", "びょ"] }
+];
+const HANDAKUTEN_YOUON_LAYOUT = [{ label: "p", cells: ["ぴゃ", "ぴゅ", "ぴょ"] }];
+
 function getQuizIdleMessage() {
   if (state.category === "vocab") {
     const groupLabel = getVocabGroupMeta().label;
@@ -2300,6 +2340,194 @@ function getVocabKoreanReading(item) {
 
 function getVocabTags(item) {
   return [...new Set([...(VOCAB_GROUP_TAGS[item.group] || []), ...(item.tags || [])])];
+}
+
+function buildKanaLookup(category) {
+  return Object.values(KANA_SETS[category])
+    .flat()
+    .reduce((lookup, item) => {
+      lookup[item.kana] = item;
+      return lookup;
+    }, {});
+}
+
+function normalizeKanaLayout(layout, category) {
+  return layout.map((row) => ({
+    ...row,
+    cells: row.cells.map((cell) => (cell && category === "katakana" ? toKatakana(cell) : cell))
+  }));
+}
+
+function renderKanaTableSection(title, columns, layout, lookup, currentKana) {
+  const rowsMarkup = layout
+    .map((row) => {
+      const cellsMarkup = row.cells
+        .map((cell) => {
+          if (!cell) {
+            return '<td class="kana-table-cell is-empty" aria-hidden="true"></td>';
+          }
+
+          const item = lookup[cell];
+
+          if (!item) {
+            return '<td class="kana-table-cell is-empty" aria-hidden="true"></td>';
+          }
+
+          const isCurrent = currentKana === cell;
+          return `
+            <td class="kana-table-cell ${isCurrent ? "is-current" : ""}">
+              <span class="kana-table-symbol">${escapeHtml(item.kana)}</span>
+              <span class="kana-table-reading">${escapeHtml(item.roman[0])}</span>
+            </td>
+          `;
+        })
+        .join("");
+
+      return `
+        <tr>
+          <th scope="row" class="kana-table-axis">${escapeHtml(row.label)}</th>
+          ${cellsMarkup}
+        </tr>
+      `;
+    })
+    .join("");
+
+  return `
+    <section class="kana-chart-section">
+      <div class="kana-chart-head">
+        <h3 class="stage-heading">${escapeHtml(title)}</h3>
+      </div>
+      <div class="kana-table-wrap">
+        <table class="kana-table">
+          <thead>
+            <tr>
+              <th scope="col" class="kana-table-corner">행</th>
+              ${columns
+                .map((column) => `<th scope="col" class="kana-table-axis">${escapeHtml(column)}</th>`)
+                .join("")}
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsMarkup}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function renderKanaChipSection(title, items, currentKana) {
+  return `
+    <section class="kana-chart-section">
+      <div class="kana-chart-head">
+        <h3 class="stage-heading">${escapeHtml(title)}</h3>
+      </div>
+      <div class="kana-chip-grid">
+        ${items
+          .map(
+            (item) => `
+              <div class="kana-chip ${currentKana === item.kana ? "is-current" : ""}">
+                <span class="kana-chip-symbol">${escapeHtml(item.kana)}</span>
+                <span class="kana-chip-reading">${escapeHtml(item.roman[0])}</span>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderKanaChart(item) {
+  const category = state.category;
+  const lookup = buildKanaLookup(category);
+  const options = state.categoryOptions[category];
+  const sections = [
+    renderKanaTableSection(
+      "기본 문자표",
+      GOJUON_COLUMNS,
+      normalizeKanaLayout(GOJUON_LAYOUT, category),
+      lookup,
+      item.kana
+    )
+  ];
+
+  if (options.dakuten) {
+    sections.push(
+      renderKanaTableSection(
+        "탁음 표",
+        GOJUON_COLUMNS,
+        normalizeKanaLayout(DAKUTEN_LAYOUT, category),
+        lookup,
+        item.kana
+      )
+    );
+  }
+
+  if (options.handakuten) {
+    sections.push(
+      renderKanaTableSection(
+        "반탁음 표",
+        GOJUON_COLUMNS,
+        normalizeKanaLayout(HANDAKUTEN_LAYOUT, category),
+        lookup,
+        item.kana
+      )
+    );
+  }
+
+  if (options.youon) {
+    sections.push(
+      renderKanaTableSection(
+        "요음 표",
+        YOUON_COLUMNS,
+        normalizeKanaLayout(YOUON_LAYOUT, category),
+        lookup,
+        item.kana
+      )
+    );
+
+    if (options.dakuten) {
+      sections.push(
+        renderKanaTableSection(
+          "탁음 요음 표",
+          YOUON_COLUMNS,
+          normalizeKanaLayout(DAKUTEN_YOUON_LAYOUT, category),
+          lookup,
+          item.kana
+        )
+      );
+    }
+
+    if (options.handakuten) {
+      sections.push(
+        renderKanaTableSection(
+          "반탁음 요음 표",
+          YOUON_COLUMNS,
+          normalizeKanaLayout(HANDAKUTEN_YOUON_LAYOUT, category),
+          lookup,
+          item.kana
+        )
+      );
+    }
+  }
+
+  if (options.sokuon) {
+    sections.push(renderKanaChipSection("촉음 패턴", KANA_SETS[category].sokuon, item.kana));
+  }
+
+  if (options.choon) {
+    sections.push(renderKanaChipSection("장음 패턴", KANA_SETS[category].choon, item.kana));
+  }
+
+  return `
+    <div class="kana-chart-panel">
+      <p class="stage-copy">현재 보고 있는 문자를 표에서 함께 확인하세요. 강조된 칸이 현재 학습 항목입니다.</p>
+      <div class="kana-chart-stack">
+        ${sections.join("")}
+      </div>
+    </div>
+  `;
 }
 
 function buildQuizQuestion(item) {
@@ -2970,6 +3198,21 @@ function renderMainPanel() {
   actionPanel.innerHTML = state.mode === "learn" ? renderLearnActionPanel() : renderQuizActionPanel();
 }
 
+function renderChartPanel() {
+  const showKanaChart =
+    state.mode === "learn" && CATEGORY_CONFIG[state.category].type === "kana";
+
+  chartCard.hidden = !showKanaChart;
+
+  if (!showKanaChart) {
+    chartPanel.innerHTML = "";
+    return;
+  }
+
+  const item = getCurrentLearnItem();
+  chartPanel.innerHTML = item ? renderKanaChart(item) : "";
+}
+
 function renderStatusPanel() {
   const items = getCategoryItems(state.category);
 
@@ -3247,6 +3490,7 @@ function renderApp() {
   ensureLearnIndexInRange(state.category);
   renderStaticUi();
   renderMainPanel();
+  renderChartPanel();
   renderStatusPanel();
   renderNotePanel();
 }

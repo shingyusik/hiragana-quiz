@@ -285,13 +285,18 @@ button:disabled {
 }
 
 .stage-card,
-.action-card {
+.action-card,
+.chart-card {
   min-height: 360px;
 }
 
 .status-card,
 .note-card {
   min-height: 250px;
+}
+
+.chart-card {
+  grid-column: 1 / -1;
 }
 
 .learn-stage,
@@ -511,6 +516,102 @@ button:disabled {
   color: var(--muted);
 }
 
+.kana-chart-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.kana-chart-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.kana-chart-section {
+  display: grid;
+  gap: 10px;
+}
+
+.kana-chart-head .stage-heading {
+  margin-bottom: 0;
+  font-size: 1.08rem;
+}
+
+.kana-table-wrap {
+  overflow-x: auto;
+}
+
+.kana-table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+
+.kana-table th,
+.kana-table td {
+  text-align: center;
+}
+
+.kana-table-corner,
+.kana-table-axis {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.kana-table-cell {
+  min-width: 68px;
+  padding: 12px 8px;
+  border-radius: 18px;
+  border: 1px solid rgba(110, 75, 28, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.kana-table-cell.is-current,
+.kana-chip.is-current {
+  border-color: rgba(159, 52, 23, 0.22);
+  background: linear-gradient(180deg, rgba(255, 241, 232, 0.96), rgba(252, 231, 214, 0.96));
+  box-shadow: 0 12px 24px rgba(159, 52, 23, 0.12);
+}
+
+.kana-table-cell.is-empty {
+  background: rgba(255, 255, 255, 0.28);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.kana-table-symbol,
+.kana-chip-symbol {
+  display: block;
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.kana-table-reading,
+.kana-chip-reading {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.kana-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  gap: 10px;
+}
+
+.kana-chip {
+  padding: 12px 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(110, 75, 28, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+  text-align: center;
+}
+
 @media (max-width: 860px) {
   .app-shell {
     width: min(100% - 24px, 720px);
@@ -556,5 +657,20 @@ button:disabled {
 
   .prompt-main.is-text {
     font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+
+  .kana-table {
+    min-width: 360px;
+    border-spacing: 6px;
+  }
+
+  .kana-table-cell {
+    min-width: 58px;
+    padding: 10px 6px;
+  }
+
+  .kana-table-symbol,
+  .kana-chip-symbol {
+    font-size: 1.35rem;
   }
 }
