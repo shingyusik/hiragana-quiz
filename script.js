@@ -1130,6 +1130,234 @@ const VOCAB_ITEMS = [
     tags: ["기본 숫자", "10"]
   },
   {
+    word: "じゅういち",
+    reading: "juuichi",
+    koreanReading: "쥬우이치",
+    meaning: "열하나, 11",
+    accepted: ["열하나", "11", "십일"],
+    example: "じゅういちまで かぞえます。",
+    note: "11부터는 `じゅう` 뒤에 1부터 9까지의 숫자를 붙여 만듭니다.",
+    kana: ["じゅ", "う", "い", "ち"],
+    group: "number",
+    tags: ["10 이상", "11"]
+  },
+  {
+    word: "じゅうに",
+    reading: "juuni",
+    koreanReading: "쥬우니",
+    meaning: "열둘, 12",
+    accepted: ["열둘", "12", "십이"],
+    example: "じゅうにこ あります。",
+    note: "`じゅう`에 `に`를 붙이면 12가 됩니다.",
+    kana: ["じゅ", "う", "に"],
+    group: "number",
+    tags: ["10 이상", "12"]
+  },
+  {
+    word: "じゅうさん",
+    reading: "juusan",
+    koreanReading: "쥬우산",
+    meaning: "열셋, 13",
+    accepted: ["열셋", "13", "십삼"],
+    example: "じゅうさんまで かぞえます。",
+    note: "13도 같은 방식으로 `じゅう` 뒤에 `さん`을 붙입니다.",
+    kana: ["じゅ", "う", "さ", "ん"],
+    group: "number",
+    tags: ["10 이상", "13"]
+  },
+  {
+    word: "にじゅう",
+    reading: "nijuu",
+    koreanReading: "니쥬우",
+    meaning: "스물, 20",
+    accepted: ["스물", "20", "이십"],
+    example: "にじゅうまで かぞえます。",
+    note: "20은 `に`와 `じゅう`를 붙여 만듭니다.",
+    kana: ["に", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "20"]
+  },
+  {
+    word: "さんじゅう",
+    reading: "sanjuu",
+    koreanReading: "산쥬우",
+    meaning: "서른, 30",
+    accepted: ["서른", "30", "삼십"],
+    example: "さんじゅうにん います。",
+    note: "30은 `さん`과 `じゅう`를 붙입니다.",
+    kana: ["さ", "ん", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "30"]
+  },
+  {
+    word: "よんじゅう",
+    reading: "yonjuu",
+    koreanReading: "욘쥬우",
+    meaning: "마흔, 40",
+    accepted: ["마흔", "40", "사십"],
+    example: "よんじゅうえんです。",
+    note: "40은 보통 `しじゅう`보다 `よんじゅう`로 읽습니다.",
+    kana: ["よ", "ん", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "40"]
+  },
+  {
+    word: "ごじゅう",
+    reading: "gojuu",
+    koreanReading: "고쥬우",
+    meaning: "쉰, 50",
+    accepted: ["쉰", "50", "오십"],
+    example: "ごじゅうえんです。",
+    note: "50은 `ご`와 `じゅう`를 붙여 만듭니다.",
+    kana: ["ご", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "50"]
+  },
+  {
+    word: "ろくじゅう",
+    reading: "rokujuu",
+    koreanReading: "로쿠쥬우",
+    meaning: "예순, 60",
+    accepted: ["예순", "60", "육십"],
+    example: "ろくじゅうぷんです。",
+    note: "60은 `ろく`와 `じゅう`를 붙입니다.",
+    kana: ["ろ", "く", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "60"]
+  },
+  {
+    word: "ななじゅう",
+    reading: "nanajuu",
+    koreanReading: "나나쥬우",
+    meaning: "일흔, 70",
+    accepted: ["일흔", "70", "칠십"],
+    example: "ななじゅうまで かぞえます。",
+    note: "70은 `しちじゅう`보다 `ななじゅう`를 먼저 익히면 덜 헷갈립니다.",
+    kana: ["な", "な", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "70"]
+  },
+  {
+    word: "はちじゅう",
+    reading: "hachijuu",
+    koreanReading: "하치쥬우",
+    meaning: "여든, 80",
+    accepted: ["여든", "80", "팔십"],
+    example: "はちじゅうえんです。",
+    note: "80은 `はち`와 `じゅう`를 붙여 만듭니다.",
+    kana: ["は", "ち", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "80"]
+  },
+  {
+    word: "きゅうじゅう",
+    reading: "kyuujuu",
+    koreanReading: "큐우쥬우",
+    meaning: "아흔, 90",
+    accepted: ["아흔", "90", "구십"],
+    example: "きゅうじゅうまで かぞえます。",
+    note: "90은 `きゅう`와 `じゅう`를 붙여 만듭니다.",
+    kana: ["きゅ", "う", "じゅ", "う"],
+    group: "number",
+    tags: ["10단위", "90"]
+  },
+  {
+    word: "ひゃく",
+    reading: "hyaku",
+    koreanReading: "햐쿠",
+    meaning: "백, 100",
+    accepted: ["백", "100", "일백"],
+    example: "ひゃくえんです。",
+    note: "100은 `いちひゃく`가 아니라 보통 `ひゃく`라고 합니다.",
+    kana: ["ひゃ", "く"],
+    group: "number",
+    tags: ["큰 수", "100"]
+  },
+  {
+    word: "さんびゃく",
+    reading: "sanbyaku",
+    koreanReading: "산뱌쿠",
+    meaning: "삼백, 300",
+    accepted: ["삼백", "300"],
+    example: "さんびゃくえんです。",
+    note: "300은 `さんひゃく`가 아니라 소리가 바뀌어 `さんびゃく`입니다.",
+    kana: ["さ", "ん", "びゃ", "く"],
+    group: "number",
+    tags: ["큰 수", "100단위", "발음 변화"]
+  },
+  {
+    word: "ろっぴゃく",
+    reading: "roppyaku",
+    koreanReading: "롯퍄쿠",
+    meaning: "육백, 600",
+    accepted: ["육백", "600"],
+    example: "ろっぴゃくえんです。",
+    note: "600은 촉음이 들어가 `ろっぴゃく`로 읽습니다.",
+    kana: ["ろ", "っ", "ぴゃ", "く"],
+    group: "number",
+    tags: ["큰 수", "100단위", "발음 변화"]
+  },
+  {
+    word: "はっぴゃく",
+    reading: "happyaku",
+    koreanReading: "핫퍄쿠",
+    meaning: "팔백, 800",
+    accepted: ["팔백", "800"],
+    example: "はっぴゃくえんです。",
+    note: "800도 촉음이 들어가 `はっぴゃく`로 읽습니다.",
+    kana: ["は", "っ", "ぴゃ", "く"],
+    group: "number",
+    tags: ["큰 수", "100단위", "발음 변화"]
+  },
+  {
+    word: "せん",
+    reading: "sen",
+    koreanReading: "센",
+    meaning: "천, 1000",
+    accepted: ["천", "1000", "일천"],
+    example: "せんえんです。",
+    note: "1000은 `いちせん`보다 보통 `せん`이라고 합니다.",
+    kana: ["せ", "ん"],
+    group: "number",
+    tags: ["큰 수", "1000"]
+  },
+  {
+    word: "さんぜん",
+    reading: "sanzen",
+    koreanReading: "산젠",
+    meaning: "삼천, 3000",
+    accepted: ["삼천", "3000"],
+    example: "さんぜんえんです。",
+    note: "3000은 `さんせん`이 아니라 `さんぜん`으로 소리가 바뀝니다.",
+    kana: ["さ", "ん", "ぜ", "ん"],
+    group: "number",
+    tags: ["큰 수", "1000단위", "발음 변화"]
+  },
+  {
+    word: "はっせん",
+    reading: "hassen",
+    koreanReading: "핫센",
+    meaning: "팔천, 8000",
+    accepted: ["팔천", "8000"],
+    example: "はっせんえんです。",
+    note: "8000은 촉음이 들어가 `はっせん`으로 읽습니다.",
+    kana: ["は", "っ", "せ", "ん"],
+    group: "number",
+    tags: ["큰 수", "1000단위", "발음 변화"]
+  },
+  {
+    word: "いちまん",
+    reading: "ichiman",
+    koreanReading: "이치만",
+    meaning: "만, 10000",
+    accepted: ["만", "10000", "일만"],
+    example: "いちまんえんです。",
+    note: "일본어는 10000부터 `まん` 단위를 자주 씁니다.",
+    kana: ["い", "ち", "ま", "ん"],
+    group: "number",
+    tags: ["큰 수", "10000"]
+  },
+  {
     word: "うれしい",
     reading: "ureshii",
     meaning: "기쁘다",
@@ -2768,14 +2996,14 @@ function getGuideItems() {
     if (state.vocabGroup === "number") {
       return state.mode === "learn"
         ? [
-            "숫자는 단독 의미보다 `몇 개`, `몇 분` 같은 세트로 떠올리는 편이 오래 갑니다.",
-            "`よん`처럼 실제 회화에서 더 자주 쓰는 읽기를 먼저 고정하세요.",
-            "짧은 단어일수록 소리와 의미를 즉시 연결하는 훈련이 중요합니다."
+            "숫자는 `じゅう + 숫자`, `숫자 + じゅう`처럼 붙는 규칙을 먼저 잡으면 10 이상이 쉬워집니다.",
+            "`よんじゅう / ななじゅう / きゅうじゅう`처럼 실제 회화에서 더 자주 쓰는 읽기를 먼저 고정하세요.",
+            "`さんびゃく / ろっぴゃく / はっぴゃく`, `さんぜん / はっせん`처럼 소리가 바뀌는 큰 수는 따로 반복하세요."
           ]
         : [
             "숫자 퀴즈는 빠르게 대답해도 좋지만, 맞힌 뒤 발음을 한 번 더 읽어보는 편이 좋습니다.",
-            "헷갈리면 한국어 숫자 순서를 세지 말고 일본어 표기 자체를 바로 인식하세요.",
-            "숫자는 다음 단계에서 날짜와 시간 표현으로 확장하기 좋습니다."
+            "헷갈리면 한국어 숫자 순서를 세지 말고 `じゅう`, `ひゃく`, `せん`, `まん` 단위를 먼저 찾으세요.",
+            "숫자는 다음 단계에서 가격, 시간, 날짜 표현으로 확장하기 좋습니다."
           ];
     }
 
