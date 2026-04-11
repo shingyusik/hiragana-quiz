@@ -285,8 +285,7 @@ button:disabled {
 }
 
 .stage-card,
-.action-card,
-.chart-card {
+.action-card {
   min-height: 360px;
 }
 
@@ -297,6 +296,25 @@ button:disabled {
 
 .chart-card {
   grid-column: 1 / -1;
+  min-height: 0;
+}
+
+.chart-card-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.chart-toggle-button {
+  padding: 10px 16px;
+  white-space: nowrap;
+}
+
+.chart-card.is-collapsed .panel-body {
+  padding-top: 12px;
 }
 
 .learn-stage,
@@ -657,6 +675,11 @@ button:disabled {
 
   .prompt-main.is-text {
     font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+
+  .chart-card-head {
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .kana-table {

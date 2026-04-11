@@ -2043,6 +2043,7 @@ const mainPanel = document.getElementById("mainPanel");
 const actionPanel = document.getElementById("actionPanel");
 const chartCard = document.getElementById("chartCard");
 const chartPanel = document.getElementById("chartPanel");
+const chartToggle = document.getElementById("chartToggle");
 const statusPanel = document.getElementById("statusPanel");
 const notePanel = document.getElementById("notePanel");
 
@@ -2094,6 +2095,7 @@ const state = {
   category: "hiragana",
   mode: "learn",
   vocabGroup: "all",
+  kanaChartExpanded: false,
   learnIndexByCategory: {
     hiragana: 0,
     katakana: 0,
@@ -3203,14 +3205,33 @@ function renderChartPanel() {
     state.mode === "learn" && CATEGORY_CONFIG[state.category].type === "kana";
 
   chartCard.hidden = !showKanaChart;
+  chartToggle.hidden = !showKanaChart;
 
   if (!showKanaChart) {
     chartPanel.innerHTML = "";
     return;
   }
 
+  chartCard.classList.toggle("is-collapsed", !state.kanaChartExpanded);
+  chartToggle.setAttribute("aria-expanded", String(state.kanaChartExpanded));
+  chartToggle.textContent = state.kanaChartExpanded ? "표 접기" : "표 펼치기";
+
+  if (!state.kanaChartExpanded) {
+    chartPanel.innerHTML = `
+      <div class="empty-card">
+        필요할 때만 문자 표를 펼쳐서 확인할 수 있습니다.
+      </div>
+    `;
+    return;
+  }
+
   const item = getCurrentLearnItem();
   chartPanel.innerHTML = item ? renderKanaChart(item) : "";
+}
+
+function toggleKanaChart() {
+  state.kanaChartExpanded = !state.kanaChartExpanded;
+  renderChartPanel();
 }
 
 function renderStatusPanel() {
@@ -3586,6 +3607,7 @@ Object.keys(OPTION_CONFIG).forEach((key) => {
 vocabGroupToolbar.addEventListener("click", handleVocabGroupClick);
 actionPanel.addEventListener("click", handleActionClick);
 actionPanel.addEventListener("submit", handleActionSubmit);
+chartToggle.addEventListener("click", toggleKanaChart);
 
 resetQuiz();
 renderApp();
